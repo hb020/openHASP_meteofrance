@@ -2,33 +2,35 @@
 
 French weather reports on openHASP, independent from Home Assistant.
 
-It is made for a 480 x 320 display, in landscape mode.
+It is made for a 480 x 320 display, in landscape mode, like on a SC01-Plus. You will need PSRam.
 
 It is comprised of:
 
-* a section of pages.jsonl: ```files/pages_section.jsonl```
-* images files: ```files/p*.bin```
-* a python script that feeds the openHASP plate via MQTT, and is to be run every x minutes: ```send_weather.py```. It will replace all weather data on each pass.
+* a section of pages.jsonl
+* weather icon images files
+* a python script that feeds the openHASP plate via MQTT, and is to be run every x minutes. It will replace all weather data on each pass.
 
 # Provided pages
 
-The weather info will be shown on the following pages:
+The weather info pages are in the ```files/pages_section.jsonl``` file. Integrate that in your own ```pages.jsonl``` file. The provided pages are:
 
 * main page: weather now, overal today, overall tomorrow, rain in next hour, and weather for the next 8 hours:
   
-  ![root](./img/screenshot_p2.png)
+<img src="./img/screenshot_p2.png" alt="page2" style="border: 1px solid  gray;">
 
 * week overview page: overall info for the next 8 days:
   
-  ![week](./img/screenshot_p3.png)
+<img src="./img/screenshot_p3.png" alt="page3"  style="border: 1px solid  gray;">
 
 * N pages, 1 per day, each with quarter-day overview (N = configurable via NR_DAYS_DETAIL in the ```send_weather.py``` file):
   
-  ![detail](./img/screenshot_p4.png)
+<img src="./img/screenshot_p4.png"  alt="page4" style="border: 1px solid  gray;">
 
 The pages must be consecutive, and in that order. If you change the page numbers, you must also adapt the setting START_PAGE in the ```send_weather.py``` file.
 
-# The feed script 
+You will also need to upload the ```files/p*.bin``` weather icons to your device.
+
+# The feed script
 
 See ```send_weather.py```.
 

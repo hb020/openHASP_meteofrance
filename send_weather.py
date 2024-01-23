@@ -28,6 +28,8 @@ PLATE_NAME = "plate01"
 
 # the page number for the main weather page
 START_PAGE = 2
+# changing the following variable will only require more or less pages
+NR_DAYS_DETAIL = 4
 
 # if DEBUGME is True, it will not send to MQTT, but will print on console.
 DEBUGME = False  # True
@@ -39,9 +41,6 @@ MAX_RAIN = 8.0
 NR_RAINSECTIONS = 6
 NR_HOURS_ON_MAIN_PAGE = 8
 NR_DAYS_IN_OVERVIEW = 8
-
-# changing the following variable will only require more or less pages
-NR_DAYS_DETAIL = 4
 
 
 def weekday_name_fr(nr: int) -> str:
@@ -408,9 +407,6 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
         except Exception as e:
             print(f"Exception on MQTT connect: {str(e)}")
             return False
-    
-    # the page 
-    root_page = 2
     
     try:
         # ##### main page ###### 

@@ -18,7 +18,7 @@
 { "page": 2, "id": 24, "obj": "label", "x": 400, "y": 156, "w": 75, "h": 50, "text_font": 40, "align": 0, "text_color": "red", "text": "-XX°" }
 { "page": 2, "id": 25, "obj": "label", "x": 250, "y": 196, "w": 225, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
 { "page": 2, "id": 29, "obj": "line", "points": [[12,183],[228,183]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
-{ "page": 2, "id": 30, "obj": "label", "x": 10, "y": 156, "w": 220, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Prévisions Pluie:" }
+{ "page": 2, "id": 30, "obj": "label", "x": 10, "y": 163, "w": 220, "h": 20, "text_font": 16, "align": 1, "text_color": "black", "text": "Prévisions Pluie:" }
 { "page": 2, "id": 31, "obj": "label", "x": 10, "y": 208, "w": 220, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "0m" }
 { "page": 2, "id": 32, "obj": "label", "x": 10, "y": 208, "w": 220, "h": 20, "text_font": 16, "align": 1, "text_color": "black", "text": "30m" }
 { "page": 2, "id": 33, "obj": "label", "x": 190, "y": 208, "w": 40, "h": 20, "text_font": 16, "align": 2, "text_color": "black", "text": "1h" }
