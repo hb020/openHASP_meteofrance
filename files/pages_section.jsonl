@@ -1,0 +1,264 @@
+{ "page": 2, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 2, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 1/6"}
+{ "page": 2, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 2, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 198, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 2, "id": 6, "obj": "img", "x": 15, "y": 35, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 2, "id": 7, "obj": "label", "x": 125, "y": 50, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 8, "obj": "label", "x": 0, "y": 125, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 2, "id": 10, "obj": "label", "x": 250, "y": 32, "w": 180, "h": 30, "text_font": 24, "align": 0, "text_color": "black", "text": "Aujourd'hui:" }
+{ "page": 2, "id": 11, "obj": "img", "x": 255, "y": 59, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 12, "obj": "label", "x": 305, "y": 59, "w": 75, "h": 50, "text_font": 40, "align": 2, "text_color": "blue", "text": "-XX°" }
+{ "page": 2, "id": 13, "obj": "label", "x": 380, "y": 59, "w": 20, "h": 50, "text_font": 40, "align": 1, "text_color": "black", "text": "/" }
+{ "page": 2, "id": 14, "obj": "label", "x": 400, "y": 59, "w": 75, "h": 50, "text_font": 40, "align": 0, "text_color": "red", "text": "-XX°" }
+{ "page": 2, "id": 15, "obj": "label", "x": 250, "y": 99, "w": 225, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 2, "id": 20, "obj": "label", "x": 250, "y": 128, "w": 180, "h": 30, "text_font": 24, "align": 0, "text_color": "black", "text": "Demain:" }
+{ "page": 2, "id": 21, "obj": "img", "x": 255, "y": 156, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 22, "obj": "label", "x": 305, "y": 156, "w": 75, "h": 50, "text_font": 40, "align": 2, "text_color": "blue", "text": "-XX°" }
+{ "page": 2, "id": 23, "obj": "label", "x": 380, "y": 156, "w": 20, "h": 50, "text_font": 40, "align": 1, "text_color": "black", "text": "/" }
+{ "page": 2, "id": 24, "obj": "label", "x": 400, "y": 156, "w": 75, "h": 50, "text_font": 40, "align": 0, "text_color": "red", "text": "-XX°" }
+{ "page": 2, "id": 25, "obj": "label", "x": 250, "y": 196, "w": 225, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 2, "id": 29, "obj": "line", "points": [[12,183],[228,183]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 30, "obj": "label", "x": 10, "y": 156, "w": 220, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Prévisions Pluie:" }
+{ "page": 2, "id": 31, "obj": "label", "x": 10, "y": 208, "w": 220, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "0m" }
+{ "page": 2, "id": 32, "obj": "label", "x": 10, "y": 208, "w": 220, "h": 20, "text_font": 16, "align": 1, "text_color": "black", "text": "30m" }
+{ "page": 2, "id": 33, "obj": "label", "x": 190, "y": 208, "w": 40, "h": 20, "text_font": 16, "align": 2, "text_color": "black", "text": "1h" }
+{ "page": 2, "id": 34, "obj": "img", "x": 12, "y": 184, "w": 216, "h": 28, "src": "L:/raingraph.bin" }
+{ "page": 2, "id": 35,"obj":"obj", "x": 12, "y": 184, "w": 36, "h":26, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 36,"obj":"obj", "x": 48, "y": 184, "w": 36, "h":20, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 37,"obj":"obj", "x": 84, "y": 184, "w": 36, "h":10, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 38,"obj":"obj", "x": 120, "y": 184, "w": 36, "h":0, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 39,"obj":"obj", "x": 156, "y": 184, "w": 36, "h":26, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 40,"obj":"obj", "x": 192, "y": 184, "w": 36, "h":25, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8" }
+{ "page": 2, "id": 42, "obj": "label", "x": 10, "y": 160, "w": 220, "h": 68, "text_font": 16, "align": 1, "bg_opa": 255, "bg_color": "#F8F8F8", "hidden": 1, "text_color": "black", "text": "\npas de pluie prévue dans l'heure" }
+{ "page": 2, "id": 41, "obj": "line", "points": [[30,270],[90,270],[150,270],[210,270],[270,270],[330,270],[390,270],[450,270]], "line_opa": 50, "line_width": 2, "line_color": "blue"}
+{ "page": 2, "id": 52, "obj": "line", "points": [[60,310],[60,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 53, "obj": "line", "points": [[120,310],[120,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 54, "obj": "line", "points": [[180,310],[180,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 55, "obj": "line", "points": [[240,310],[240,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 56, "obj": "line", "points": [[300,310],[300,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 57, "obj": "line", "points": [[360,310],[360,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 58, "obj": "line", "points": [[420,310],[420,240]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 59, "obj": "line", "points": [[240,42],[240,220]], "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 2, "id": 60, "obj": "label", "x": 3, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "11H" }
+{ "page": 2, "id": 61, "obj": "img", "x": 5, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 62, "obj": "label", "x": 3, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 63, "obj": "label", "x": 63, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "12H" }
+{ "page": 2, "id": 64, "obj": "img", "x": 65, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 65, "obj": "label", "x": 63, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 66, "obj": "label", "x": 123, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "13H" }
+{ "page": 2, "id": 67, "obj": "img", "x": 125, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 68, "obj": "label", "x": 123, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 69, "obj": "label", "x": 183, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "14H" }
+{ "page": 2, "id": 70, "obj": "img", "x": 185, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 71, "obj": "label", "x": 183, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 72, "obj": "label", "x": 243, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "15H" }
+{ "page": 2, "id": 73, "obj": "img", "x": 245, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 74, "obj": "label", "x": 243, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 75, "obj": "label", "x": 303, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "16H" }
+{ "page": 2, "id": 76, "obj": "img", "x": 305, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 77, "obj": "label", "x": 303, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 78, "obj": "label", "x": 363, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "17H" }
+{ "page": 2, "id": 79, "obj": "img", "x": 365, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 80, "obj": "label", "x": 363, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 81, "obj": "label", "x": 423, "y": 230, "w": 54, "h": 20, "text_font": 16, "align": 0, "text_color": "black", "text": "18H" }
+{ "page": 2, "id": 82, "obj": "img", "x": 425, "y": 245, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 2, "id": 83, "obj": "label", "x": 423, "y": 290, "w": 54, "h": 30, "text_font": 24, "align": 2, "text_color": "black", "text": "-XX°" }
+{ "page": 2, "id": 90, "obj": "obj", "swipe": 1, "x":0, "y": 32, "w": 480, "h": 288, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 2, "id": 91, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 1", "long": "page 10"}}
+{ "page": 2, "id": 92, "obj": "obj", "x": 240, "y": 34, "w": 240, "h": 97, "opacity": 0, "action": {"up": "page 4"}}
+{ "page": 2, "id": 93, "obj": "obj", "x": 240, "y": 131, "w": 240, "h": 97, "opacity": 0, "action": {"up": "page 5"}}
+{ "page": 3, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 3, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 2/6"}
+{ "page": 3, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 3, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 73, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 3, "id": 5,  "obj": "obj", "x": 0, "y": 105, "w": 480, "h": 215, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white"}
+{ "page": 3, "id": 11, "obj": "line", "points": [[60,42],[60,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 12, "obj": "line", "points": [[120,42],[120,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 13, "obj": "line", "points": [[180,42],[180,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 14, "obj": "line", "points": [[240,42],[240,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 15, "obj": "line", "points": [[300,42],[300,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 16, "obj": "line", "points": [[360,42],[360,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 17, "obj": "line", "points": [[420,42],[420,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 18, "obj": "line", "points": [[10,105],[470,105]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0"}
+{ "page": 3, "id": 20, "obj": "label", "x": 1, "y": 40, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Dim" }
+{ "page": 3, "id": 21, "obj": "label", "x": 1, "y": 68, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "15" }
+{ "page": 3, "id": 22, "obj": "img", "x": 3, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 23, "obj": "label", "x": 1, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 24, "obj": "line", "points": [[29,222],[29,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 25, "obj": "label", "x": 1, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 26, "obj": "line", "points": [[29,250],[29,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 30, "obj": "label", "x": 61, "y": 40, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Lun" }
+{ "page": 3, "id": 31, "obj": "label", "x": 61, "y": 68, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "16" }
+{ "page": 3, "id": 32, "obj": "img", "x": 63, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 33, "obj": "label", "x": 61, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 34, "obj": "line", "points": [[89,222],[89,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 35, "obj": "label", "x": 61, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 36, "obj": "line", "points": [[89,250],[89,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 40, "obj": "label", "x": 121, "y": 40, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Mar" }
+{ "page": 3, "id": 41, "obj": "label", "x": 121, "y": 68, "w": 58, "h": 28, "text_font": 24, "align": 1, "text_color": "#404040", "text": "17" }
+{ "page": 3, "id": 42, "obj": "img", "x": 123, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 43, "obj": "label", "x": 121, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 44, "obj": "line", "points": [[149,222],[149,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 45, "obj": "label", "x": 121, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 46, "obj": "line", "points": [[149,250],[149,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 50, "obj": "label", "x": 181, "y": 40, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Mer" }
+{ "page": 3, "id": 51, "obj": "label", "x": 181, "y": 68, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "18" }
+{ "page": 3, "id": 52, "obj": "img", "x": 183, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 53, "obj": "label", "x": 181, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 54, "obj": "line", "points": [[209,222],[209,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 55, "obj": "label", "x": 181, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 56, "obj": "line", "points": [[209,250],[209,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 60, "obj": "label", "x": 241, "y": 40, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Jeu" }
+{ "page": 3, "id": 61, "obj": "label", "x": 241, "y": 68, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "19" }
+{ "page": 3, "id": 62, "obj": "img", "x": 243, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 63, "obj": "label", "x": 241, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 64, "obj": "line", "points": [[269,222],[269,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 65, "obj": "label", "x": 241, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 66, "obj": "line", "points": [[269,250],[269,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 70, "obj": "label", "x": 301, "y": 40, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Ven" }
+{ "page": 3, "id": 71, "obj": "label", "x": 301, "y": 68, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "20" }
+{ "page": 3, "id": 72, "obj": "img", "x": 303, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 73, "obj": "label", "x": 301, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 74, "obj": "line", "points": [[329,222],[329,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 75, "obj": "label", "x": 301, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 76, "obj": "line", "points": [[329,250],[329,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 80, "obj": "label", "x": 361, "y": 40, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Sam" }
+{ "page": 3, "id": 81, "obj": "label", "x": 361, "y": 68, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "21" }
+{ "page": 3, "id": 82, "obj": "img", "x": 363, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 83, "obj": "label", "x": 361, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 84, "obj": "line", "points": [[389,222],[389,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 85, "obj": "label", "x": 361, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 86, "obj": "line", "points": [[389,250],[389,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 90, "obj": "label", "x": 421, "y": 40, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Dim" }
+{ "page": 3, "id": 91, "obj": "label", "x": 421, "y": 68, "w": 58, "h": 34, "text_font": 24, "align": 1, "text_color": "#404040", "text": "22" }
+{ "page": 3, "id": 92, "obj": "img", "x": 423, "y": 120, "w": 50, "h": 50, "src": "L:/p12bisj.bin" }
+{ "page": 3, "id": 93, "obj": "label", "x": 421, "y": 178, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "red", "text": "-XX°" }
+{ "page": 3, "id": 94, "obj": "line", "points": [[449,222],[449,284]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#F0F0F0"}
+{ "page": 3, "id": 95, "obj": "label", "x": 421, "y": 283, "w": 58, "h": 34, "text_font": 32, "align": 1, "text_color": "blue", "text": "-XX°" }
+{ "page": 3, "id": 96, "obj": "line", "points": [[449,250],[449,264]], "line_width": 10, "line_rounded": true, "line_opa": 255, "line_color": "#80D0FF"}
+{ "page": 3, "id": 98, "obj": "obj", "swipe": 1, "x":0, "y": 105, "w": 480, "h": 215, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 3, "id": 99, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 2"}}
+{ "page": 3, "id": 101, "obj": "obj", "x": 0, "y": 34, "w": 59, "h": 73, "opacity": 0, "action": {"up": "page 4"}}
+{ "page": 3, "id": 102, "obj": "obj", "x": 60, "y": 34, "w": 59, "h": 73, "opacity": 0, "action": {"up": "page 5"}}
+{ "page": 3, "id": 103, "obj": "obj", "x": 120, "y": 34, "w": 59, "h": 73, "opacity": 0, "action": {"up": "page 6"}}
+{ "page": 3, "id": 104, "obj": "obj", "x": 180, "y": 34, "w": 59, "h": 73, "opacity": 0, "action": {"up": "page 7"}}
+{ "page": 4, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 4, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 3/6"}
+{ "page": 4, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 4, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 28, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 4, "id": 5,  "obj": "obj", "x": 0, "y": 60, "w": 480, "h": 240, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white"}
+{ "page": 4, "id": 14, "obj": "line", "points": [[240,60],[240,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 4, "id": 15, "obj": "line", "points": [[10,189],[470,189]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 4, "id": 20, "obj": "label", "x": 0, "y": 30, "w": 480, "h": 30, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Aujourd'hui" }
+{ "page": 4, "id": 30, "obj": "label", "x": 155, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "matin" }
+{ "page": 4, "id": 31, "obj": "label", "x": 110, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 4, "id": 32, "obj": "img", "x": 5, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 4, "id": 33, "obj": "label", "x": 0, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 4, "id": 34, "obj": "obj", "x": 0, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 4, "id": 35, "obj": "label", "x": 395, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "après-midi" }
+{ "page": 4, "id": 36, "obj": "label", "x": 350, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 4, "id": 37, "obj": "img", "x": 245, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 4, "id": 38, "obj": "label", "x": 240, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 4, "id": 39, "obj": "obj", "x": 241, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 4, "id": 40, "obj": "label", "x": 155, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "soirée" }
+{ "page": 4, "id": 41, "obj": "label", "x": 110, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 4, "id": 42, "obj": "img", "x": 5, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 4, "id": 43, "obj": "label", "x": 0, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 4, "id": 44, "obj": "obj", "x": 0, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 4, "id": 45, "obj": "label", "x": 395, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "nuit" }
+{ "page": 4, "id": 46, "obj": "label", "x": 350, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 4, "id": 47, "obj": "img", "x": 245, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 4, "id": 48, "obj": "label", "x": 240, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 4, "id": 49, "obj": "obj", "x": 241, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 4, "id": 90, "obj": "obj", "swipe": 1, "x":0, "y": 32, "w": 480, "h": 288, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 4, "id": 91, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 2"}}
+{ "page": 5, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 5, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 4/6"}
+{ "page": 5, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 5, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 28, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 5, "id": 5,  "obj": "obj", "x": 0, "y": 60, "w": 480, "h": 240, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white"}
+{ "page": 5, "id": 14, "obj": "line", "points": [[240,60],[240,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 5, "id": 15, "obj": "line", "points": [[10,189],[470,189]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 5, "id": 20, "obj": "label", "x": 0, "y": 30, "w": 480, "h": 30, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Demain" }
+{ "page": 5, "id": 30, "obj": "label", "x": 155, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "matin" }
+{ "page": 5, "id": 31, "obj": "label", "x": 110, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 5, "id": 32, "obj": "img", "x": 5, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 5, "id": 33, "obj": "label", "x": 0, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 5, "id": 34, "obj": "obj", "x": 0, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 5, "id": 35, "obj": "label", "x": 395, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "après-midi" }
+{ "page": 5, "id": 36, "obj": "label", "x": 350, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 5, "id": 37, "obj": "img", "x": 245, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 5, "id": 38, "obj": "label", "x": 240, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 5, "id": 39, "obj": "obj", "x": 241, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 5, "id": 40, "obj": "label", "x": 155, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "soirée" }
+{ "page": 5, "id": 41, "obj": "label", "x": 110, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 5, "id": 42, "obj": "img", "x": 5, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 5, "id": 43, "obj": "label", "x": 0, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 5, "id": 44, "obj": "obj", "x": 0, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 5, "id": 45, "obj": "label", "x": 395, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "nuit" }
+{ "page": 5, "id": 46, "obj": "label", "x": 350, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 5, "id": 47, "obj": "img", "x": 245, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 5, "id": 48, "obj": "label", "x": 240, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 5, "id": 49, "obj": "obj", "x": 241, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 5, "id": 90, "obj": "obj", "swipe": 1, "x":0, "y": 32, "w": 480, "h": 288, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 5, "id": 91, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 2"}}
+{ "page": 6, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 6, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 5/6"}
+{ "page": 6, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 6, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 28, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 6, "id": 5,  "obj": "obj", "x": 0, "y": 60, "w": 480, "h": 240, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white"}
+{ "page": 6, "id": 14, "obj": "line", "points": [[240,60],[240,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 6, "id": 15, "obj": "line", "points": [[10,189],[470,189]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 6, "id": 20, "obj": "label", "x": 0, "y": 30, "w": 480, "h": 30, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Après demain" }
+{ "page": 6, "id": 30, "obj": "label", "x": 155, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "matin" }
+{ "page": 6, "id": 31, "obj": "label", "x": 110, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 6, "id": 32, "obj": "img", "x": 5, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 6, "id": 33, "obj": "label", "x": 0, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 6, "id": 34, "obj": "obj", "x": 0, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 6, "id": 35, "obj": "label", "x": 395, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "après-midi" }
+{ "page": 6, "id": 36, "obj": "label", "x": 350, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 6, "id": 37, "obj": "img", "x": 245, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 6, "id": 38, "obj": "label", "x": 240, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 6, "id": 39, "obj": "obj", "x": 241, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 6, "id": 40, "obj": "label", "x": 155, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "soirée" }
+{ "page": 6, "id": 41, "obj": "label", "x": 110, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 6, "id": 42, "obj": "img", "x": 5, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 6, "id": 43, "obj": "label", "x": 0, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 6, "id": 44, "obj": "obj", "x": 0, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 6, "id": 45, "obj": "label", "x": 395, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "nuit" }
+{ "page": 6, "id": 46, "obj": "label", "x": 350, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 6, "id": 47, "obj": "img", "x": 245, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 6, "id": 48, "obj": "label", "x": 240, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 6, "id": 49, "obj": "obj", "x": 241, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 6, "id": 90, "obj": "obj", "swipe": 1, "x":0, "y": 32, "w": 480, "h": 288, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 6, "id": 91, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 2"}}
+{ "page": 7, "id": 0, "bg_color": "#FFFFFF", "swipe": 1}
+{ "page": 7, "id": 2, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "align": 1, "bg_opa": 255, "bg_color": "#FFC107", "bg_grad_color": "#CC9A06", "bg_grad_dir": 1, "text_color": "black", "text_font": 24, "text": "Méteo Paris 6/6"}
+{ "page": 7, "id": 3, "obj": "label", "x": 375, "y": 0, "w": 100, "h": 32, "align": 2, "text_font": 24, "text_color": "black", "text": "99:99:99", "template": "%H:%M:%S" }
+{ "page": 7, "id": 4,  "obj": "obj", "x": 0, "y": 32, "w": 480, "h": 28, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "#F8F8F8"}
+{ "page": 7, "id": 5,  "obj": "obj", "x": 0, "y": 60, "w": 480, "h": 240, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white"}
+{ "page": 7, "id": 14, "obj": "line", "points": [[240,60],[240,310]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 7, "id": 15, "obj": "line", "points": [[10,189],[470,189]], "line_width": 1, "line_opa": 255, "line_color": "#E0E0E0" }
+{ "page": 7, "id": 20, "obj": "label", "x": 0, "y": 30, "w": 480, "h": 30, "text_font": 24, "align": 1, "text_color": "#404040", "text": "Dans 3 jours" }
+{ "page": 7, "id": 30, "obj": "label", "x": 155, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "matin" }
+{ "page": 7, "id": 31, "obj": "label", "x": 110, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 7, "id": 32, "obj": "img", "x": 5, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 7, "id": 33, "obj": "label", "x": 0, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 7, "id": 34, "obj": "obj", "x": 0, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 7, "id": 35, "obj": "label", "x": 395, "y": 60, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "après-midi" }
+{ "page": 7, "id": 36, "obj": "label", "x": 350, "y": 80, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 7, "id": 37, "obj": "img", "x": 245, "y": 60, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 7, "id": 38, "obj": "label", "x": 240, "y": 155, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 7, "id": 39, "obj": "obj", "x": 241, "y": 60, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 7, "id": 40, "obj": "label", "x": 155, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "soirée" }
+{ "page": 7, "id": 41, "obj": "label", "x": 110, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 7, "id": 42, "obj": "img", "x": 5, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 7, "id": 43, "obj": "label", "x": 0, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 7, "id": 44, "obj": "obj", "x": 0, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 7, "id": 45, "obj": "label", "x": 395, "y": 190, "w": 80, "h": 20, "text_font": 16, "align": 2, "text_color": "#404040", "text": "nuit" }
+{ "page": 7, "id": 46, "obj": "label", "x": 350, "y": 210, "w": 150, "h": 70, "text_font": 66, "align": 0, "text_color": "black", "text": "-XX°" }
+{ "page": 7, "id": 47, "obj": "img", "x": 245, "y": 190, "w": 100, "h": 100, "src": "L:/p12bisj_big.bin" }
+{ "page": 7, "id": 48, "obj": "label", "x": 240, "y": 285, "w": 240, "h": 30, "text_font": 24, "align": 1, "text_color": "black", "text": "Xxxxxxxxxxxxxxxxxxxx" }
+{ "page": 7, "id": 49, "obj": "obj", "x": 241, "y": 190, "w": 240, "h": 130, "radius": 0, "border_opa": 0, "bg_opa": 255, "bg_color": "white", "hidden": 1 }
+{ "page": 7, "id": 90, "obj": "obj", "swipe": 1, "x":0, "y": 32, "w": 480, "h": 288, "opacity": 0, "comment": "swipe-area-at-top"}
+{ "page": 7, "id": 91, "obj": "label", "x": 0, "y": 0, "w": 480, "h": 32, "bg_opa": 0, "text": "\uE1D9", "action": {"up": "page 2"}}
