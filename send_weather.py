@@ -43,22 +43,27 @@ NR_HOURS_ON_MAIN_PAGE = 8
 NR_DAYS_IN_OVERVIEW = 8
 
 
-def weekday_name_fr(nr: int) -> str:
+def weekday_name_fr(nr: int, short: bool) -> str:
     """get the French week day name.
     Using this allows me to not require the installation of a specific locale.
 
     Args:
-        nr (int): 0 - 7, 0 = sunday
+        nr (int): 0 - 6, 0 = sunday
+        short (bool): True for short name
 
     Returns:
         str: weekday name in french
     """
-    # names = ["dimanche", "lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"]
-    names = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
-    if nr is None or nr < 0 or nr > 7:
+    longnames = ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"]
+    shortnames = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"]
+    
+    if nr is None or nr < 0 or nr > 6:
         return "???"
-    return names[nr]
-
+    if short:
+        return shortnames[nr]
+    else:
+        return longnames[nr]
+        
 
 def datediff_fr(nr: int) -> str:
     """ get the french name for the difference in days
@@ -135,7 +140,7 @@ def get_forecast(city: str = "Paris") -> dict:
             if tf["weather12H"] is not None and tf["T"]["min"] is not None:
                 ts = datetime.utcfromtimestamp(tf["dt"])
                 # avoid setlocale, just force french names
-                wf["wd"] = weekday_name_fr(int(ts.strftime("%w")))
+                wf["wd"] = weekday_name_fr(int(ts.strftime("%w")), True)
                 wf["day"] = ts.strftime("%d")
                 wf["temp_min"] = tf["T"]["min"]
                 wf["temp_max"] = tf["T"]["max"]
@@ -298,8 +303,10 @@ def get_forecast(city: str = "Paris") -> dict:
             if diffdate not in wf:
                 wf[diffdate] = {}
                 
-            wf[diffdate]["title"] = datediff_fr(diffdate)
-            
+            # wf[diffdate]["title"] = datediff_fr(diffdate)
+            # weekday(): 0 = monday. I expect 1 = monday.
+            wf[diffdate]["title"] = f"{datediff_fr(diffdate)}, {weekday_name_fr((now_date.weekday() + 1 + diffdate) % 7, False)}"
+
             wp = {}
             wp["temp"] = df["T"]
             wp["icon"] = df["weather_icon"]
