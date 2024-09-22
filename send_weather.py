@@ -5,6 +5,13 @@ import paho.mqtt.client as mqtt
 import time
 import sys
 
+# this is tested with the following versions:
+
+# paho-mqtt==1.5.1
+# meteofrance-api==1.0.2
+
+# with paho-mqtt >= 2.0, I need to use the callback_api_version parameter
+
 # Send weather info to an openHASP plate. To be called every X minutes.
 # It will replace all weather data on each pass.
 
@@ -243,7 +250,10 @@ def get_forecast(city: str = "Paris") -> dict:
         wf = {}
         idx = 1
         # sort hourly forecast on "dt"
-        tf = sorted(my_place_weather_forecast.forecast, key=lambda d: d['dt']) 
+        tf = sorted(my_place_weather_forecast.forecast, key=lambda d: d['dt'])
+        # print("************ Hourly forecast ")
+        # print(json.dumps(tf, indent=1))
+        # print("************ Hourly forecast ")
         for hf in tf:
             if idx > NR_HOURS_ON_MAIN_PAGE: 
                 continue
@@ -256,7 +266,20 @@ def get_forecast(city: str = "Paris") -> dict:
                 wfh["temp"] = hf["T"]["value"]
                 wfh["desc"] = hf["weather"]["desc"]
                 wfh["icon"] = hf["weather"]["icon"]
-                
+                precipitation = False
+                try:
+                    # print(f"{wfh['h']}: rain = {hf['rain']['1h']}")
+                    if hf["rain"]["1h"] != 0:
+                        precipitation = True
+                except:
+                    pass
+                try:
+                    # print(f"{wfh['h']}: snow = {hf['rain']['1h']}")
+                    if hf["snow"]["1h"] != 0:
+                        precipitation = True
+                except:
+                    pass
+                wfh["precipitation"] = precipitation
                 wf[idx] = wfh
                 idx += 1
         
@@ -407,7 +430,9 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             print(f"{topic}: \"{txt}\"")
 
     if not DEBUGME:
+        # this works with paho-mqtt < 2.0. With newer versions, I need to use the callback_api_version parameter
         mqttc = mqtt.Client()
+        # like: mqttc = mqtt.Client(callback_api_version=mqtt.MQTTv5)
         try:
             # yes, hard coded port. Easy to change though if needed.
             mqttc.connect(MQTTSERVER, 1883, 60)
@@ -478,11 +503,18 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             try:
                 wf = d["hourly"][i + 1]
             except:
-                wf = {"h": "??H", "temp": None, "desc": None, "icon": None}
+                wf = {"h": "??H", "temp": None, "desc": None, "icon": None, "precipitation": False}
             base = 60 + (i * 3)
             sendTxt(plate_name, f"p{START_PAGE}b{base}", wf["h"])
             sendImg(plate_name, f"p{START_PAGE}b{base + 1}", wf["icon"])
             sendTxt(plate_name, f"p{START_PAGE}b{base + 2}", formatT(wf["temp"]))
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_color", "white")
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_dir", "1")
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_color", "#0000FF")
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_main_stop", "200")
+            raining = wf["precipitation"]
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_opa", "80" if raining else "0")
+            
             try:
                 t = float(wf["temp"])
                 ti = int(round(t, 0))
@@ -654,12 +686,12 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             for part in range(0, 4):
                 base = 30 + (part * 5)
                 if part not in wf:
-                    sendProp(plate_name, f"p{p}b{base+4}", "hidden", "0")
+                    sendProp(plate_name, f"p{p}b{base + 4}", "hidden", "0")
                 else:
-                    sendProp(plate_name, f"p{p}b{base+4}", "hidden", "1")
-                    sendTxt(plate_name, f"p{p}b{base+1}", formatT(wf[part]["temp"]))
-                    sendImg(plate_name, f"p{p}b{base+2}", wf[part]["icon"] + "_big")
-                    sendTxt(plate_name, f"p{p}b{base+3}", wf[part]["desc"])
+                    sendProp(plate_name, f"p{p}b{base + 4}", "hidden", "1")
+                    sendTxt(plate_name, f"p{p}b{base + 1}", formatT(wf[part]["temp"]))
+                    sendImg(plate_name, f"p{p}b{base + 2}", wf[part]["icon"] + "_big")
+                    sendTxt(plate_name, f"p{p}b{base + 3}", wf[part]["desc"])
     
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
@@ -675,13 +707,18 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
 
 if __name__ == '__main__':
     
+    if len(sys.argv) > 1:
+        plate_name = sys.argv[1]
+    else:
+        plate_name = PLATE_NAME
+        
     r = get_forecast(CITY)
     if DEBUGME:
         print("************ outcome")
         print(json.dumps(r, indent=1))
     
     if r["ok"]:
-        v = sendDataToHASP(r, PLATE_NAME)
+        v = sendDataToHASP(r, plate_name)
         if v:
             exit(0)
     exit(1)
