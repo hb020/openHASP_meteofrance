@@ -510,8 +510,8 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             sendTxt(plate_name, f"p{START_PAGE}b{base + 2}", formatT(wf["temp"]))
             sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_color", "white")
             sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_dir", "1")
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_color", "#0000FF")
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_main_stop", "200")
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_color", "#40FFFF")
+            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_main_stop", "100")
             raining = wf["precipitation"]
             sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_opa", "80" if raining else "0")
             
