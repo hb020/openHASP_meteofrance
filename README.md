@@ -59,8 +59,8 @@ If you change CITY, START_PAGE or NR_DAYS_DETAIL, you will of course need to ada
 # How to get new images
 
 * get the SVG files from meteofrance via ```python3 svg2png.py```
-* then transform the ```img/p*.png``` files to bin files:
-  * I did that on line, following the indications on ther openHASP site. Just be aware that the online tool can only handle about 12 files at a time.
-  * put the resulting bin files in /files
+* then transform the ```img/p*.png``` files to ```bin``` files:
+  * I did that on line, following the indications on the openHASP site. Just be aware that the online tool can only handle about 12 files at a time.
+  * put the resulting ```.bin``` files in ```/files```
   * upload the bin files to the device
 
