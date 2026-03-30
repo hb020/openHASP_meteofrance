@@ -1,16 +1,17 @@
+from typing import Optional
+
 from meteofrance_api import MeteoFranceClient
-from datetime import datetime, timezone
+from datetime import datetime, timezone, UTC
 import json
 import paho.mqtt.client as mqtt
 import time
 import sys
 
-# this is tested with the following versions:
+# this is tested and compatible with the following versions:
 
-# paho-mqtt==1.5.1
-# meteofrance-api==1.0.2
-
-# with paho-mqtt >= 2.0, I need to use the callback_api_version parameter
+# Python 3.11 ... 3.14
+# paho-mqtt 2.1.0
+# meteofrance-api 1.0.2 ... 1.5.0 
 
 # Send weather info to an openHASP plate. To be called every X minutes.
 # It will replace all weather data on each pass.
@@ -20,7 +21,7 @@ import sys
 # * week overview page: overall info for the next 8 days
 # * N pages, 1 per day, each with quarter-day overview (N = configurable via NR_DAYS_DETAIL)
 
-# The pages must be consecutive, and in that order. The start page = configurable via START_PAGE.
+# The pages must be consecutive, and in that order. The start page = configurable via start_page.
 
 # This code requires one to have set the time zone of the machine to the time zone of the to-be-displayed data.
 # (It won't be difficult to change that --see timestamp_to_locale_time--, it's just not done --yet)
@@ -31,12 +32,24 @@ import sys
 # the installation's specifics. Adapt this to your needs
 MQTTSERVER = "192.168.4.20"
 CITY = "Paris"
-PLATE_NAME = "plate01"
 
-# the page number for the main weather page
-START_PAGE = 2
-# changing the following variable will only require more or less pages
-NR_DAYS_DETAIL = 4
+plate_config = {
+    "plate01": {
+        "start_page": 2,  # the page number for the main weather page
+        "nr_days_detail": 4,  # the number of pages with detail weather
+        "extra_tempnow": "p11b7",  # the element to which to replicate temp now
+        "extra_iconnow": "p11b6"  # the element to which to replicate weather icon now
+    },
+    "plate02": {
+        "start_page": 3,
+        "nr_days_detail": 4,
+        "extra_tempnow": "p12b7",  # the element to which to replicate temp now
+        "extra_iconnow": "p12b6"  # the element to which to replicate weather icon now
+    }
+}
+
+# The maximum number of days to show in detail. MUST lign up with the config above.
+MAX_NR_DAYS_DETAIL = 4
 
 # if DEBUGME is True, it will not send to MQTT, but will print on console.
 DEBUGME = False  # True
@@ -145,7 +158,7 @@ def get_forecast(city: str = "Paris") -> dict:
             tf = dfs[i]
             wf = {}
             if tf["weather12H"] is not None and tf["T"]["min"] is not None:
-                ts = datetime.utcfromtimestamp(tf["dt"])
+                ts = datetime.fromtimestamp(tf["dt"], UTC)
                 # avoid setlocale, just force french names
                 wf["wd"] = weekday_name_fr(int(ts.strftime("%w")), True)
                 wf["day"] = ts.strftime("%d")
@@ -169,7 +182,7 @@ def get_forecast(city: str = "Paris") -> dict:
         # rainNow = hf["rain"]["1h"]  # is rain in mm in the next hour
         obj["now"] = wf
         
-        rainlist = [None] * NR_RAINSECTIONS
+        rainlist: list[Optional[float]] = [None] * NR_RAINSECTIONS
         # If rain in the hour forecast is available, get it.
         if my_place_weather_forecast.position["rain_product_available"] == 1:
             RAIN_API_V3 = True
@@ -206,7 +219,7 @@ def get_forecast(city: str = "Paris") -> dict:
             for i in range(0, len(rflist)):
                 rfdet = rflist[i]
                 dt = rfdet[dtname]
-                rain_intensity = rfdet[rain_intensity_name]
+                rain_intensity: int = rfdet[rain_intensity_name]
                 if i < len(rflist) - 1:
                     duration = int((rflist[i + 1][dtname] - dt) / 60)
                 else:
@@ -220,7 +233,7 @@ def get_forecast(city: str = "Paris") -> dict:
                 offset = int(difft / 10)
                 remainder = int(difft % 10)
                 if offset < len(rainlist):
-                    mm = 0
+                    mm: float = 0
                     if rain_intensity <= 1:
                         mm = 0
                     elif rain_intensity >= 4:
@@ -229,7 +242,7 @@ def get_forecast(city: str = "Paris") -> dict:
                         mm = (MAX_RAIN / 3.0) * (rain_intensity - 1) 
                     # record in the slot
                     if rainlist[offset] is not None:
-                        v = (mm + rainlist[offset]) / 2
+                        v = (mm + rainlist[offset]) / 2  # type: ignore
                     else:
                         v = mm
                     rainlist[offset] = v
@@ -237,7 +250,7 @@ def get_forecast(city: str = "Paris") -> dict:
                     if (remainder + duration >= 15) and offset < (len(rainlist) - 1):
                         offset += 1
                         if rainlist[offset] is not None:
-                            v = (mm + rainlist[offset]) / 2
+                            v = (mm + rainlist[offset]) / 2  # type: ignore
                         else:
                             v = mm
                         rainlist[offset] = v                        
@@ -306,7 +319,7 @@ def get_forecast(city: str = "Paris") -> dict:
             if f_day.hour < 6:
                 diffdate -= 1     
 
-            if diffdate > NR_DAYS_DETAIL:
+            if diffdate > MAX_NR_DAYS_DETAIL:
                 continue
 
             # get the moment of day
@@ -345,16 +358,22 @@ def get_forecast(city: str = "Paris") -> dict:
         return obj
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
-        print(f"Exception: {str(e)} at line {exc_tb.tb_lineno}")
+        print(f"Exception: {str(e)} at line {exc_tb.tb_lineno}")  # type: ignore
         return {"ok": False}
 
 
-def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
+def sendDataToHASP(d: dict, plate_name: str = "plate", 
+                   start_page: int = 2, nr_detail_pages: int = 4, 
+                   extra_tempnow: Optional[str] = None, extra_iconnow: Optional[str] = None) -> bool:
     """ send the data to a plate
 
     Args:
         d (dict): output from get_forecast()
         plate_name (str, optional): the plate name. Defaults to "plate".
+        start_page (int, optional): the start page. Defaults to 2.
+        nr_detail_pages (int, optional): the number of detail pages. Defaults to 4.
+        extra_tempnow (str, optional): the element to which to replicate temp now. Defaults to None
+        extra_iconnow (str, optional): the element to which to replicate weather icon now. Defaults to None
 
     Returns:
         bool: True when OK
@@ -430,9 +449,7 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             print(f"{topic}: \"{txt}\"")
 
     if not DEBUGME:
-        # this works with paho-mqtt < 2.0. With newer versions, I need to use the callback_api_version parameter
-        mqttc = mqtt.Client()
-        # like: mqttc = mqtt.Client(callback_api_version=mqtt.MQTTv5)
+        mqttc = mqtt.Client(callback_api_version=mqtt.CallbackAPIVersion.VERSION2, client_id="weather_sender", protocol=mqtt.MQTTv5)  # type: ignore
         try:
             # yes, hard coded port. Easy to change though if needed.
             mqttc.connect(MQTTSERVER, 1883, 60)
@@ -447,10 +464,17 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             wf = d["now"]
         except:
             wf = {"temp": None, "desc": "None", "icon": "p3j", "rain": None}
-        sendImg(plate_name, f"p{START_PAGE}b6", wf["icon"] + "_big")
-        sendTxt(plate_name, f"p{START_PAGE}b7", formatT(wf["temp"]))
-        sendTxt(plate_name, f"p{START_PAGE}b8", wf["desc"])
-        # sendTxt(plate_name, f"p{START_PAGE}b31", wf["rain"])
+            
+        sendImg(plate_name, f"p{start_page}b6", wf["icon"] + "_big")
+        if extra_iconnow:
+            sendImg(plate_name, extra_iconnow, wf["icon"] + "_big")
+            
+        sendTxt(plate_name, f"p{start_page}b7", formatT(wf["temp"]))
+        if extra_tempnow:
+            sendTxt(plate_name, extra_tempnow, formatT(wf["temp"]))
+            
+        sendTxt(plate_name, f"p{start_page}b8", wf["desc"])
+        # sendTxt(plate_name, f"p{start_page}b31", wf["rain"])
 
         # today
         for t in [0, 1]:  # today, tomorrow
@@ -462,10 +486,10 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
                 base = 11
             else:
                 base = 21
-            sendImg(plate_name, f"p{START_PAGE}b{base}", wf["icon"])
-            sendTxt(plate_name, f"p{START_PAGE}b{base + 1}", formatT(wf["temp_min"]))
-            sendTxt(plate_name, f"p{START_PAGE}b{base + 3}", formatT(wf["temp_max"]))
-            sendTxt(plate_name, f"p{START_PAGE}b{base + 4}", wf["desc"])
+            sendImg(plate_name, f"p{start_page}b{base}", wf["icon"])
+            sendTxt(plate_name, f"p{start_page}b{base + 1}", formatT(wf["temp_min"]))
+            sendTxt(plate_name, f"p{start_page}b{base + 3}", formatT(wf["temp_max"]))
+            sendTxt(plate_name, f"p{start_page}b{base + 4}", wf["desc"])
             
         # rain
         rainBarheight = 26
@@ -487,12 +511,12 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             except Exception as e:
                 print(f"Exception on rain data: {str(e)}")
                 r = 0
-            sendProp(plate_name, f"p{START_PAGE}b{35 + i}", "h", rainBarheight - r)
+            sendProp(plate_name, f"p{start_page}b{35 + i}", "h", str(rainBarheight - r))
             if r > 0:
                 hadRain = True
                 
         # hide the rain section if there was nothing to show
-        sendProp(plate_name, f"p{START_PAGE}b42", "hidden", hadRain)
+        sendProp(plate_name, f"p{start_page}b42", "hidden", str(hadRain))
             
         # hourly
         # draw icons + text and get min/max
@@ -505,15 +529,15 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             except:
                 wf = {"h": "??H", "temp": None, "desc": None, "icon": None, "precipitation": False}
             base = 60 + (i * 3)
-            sendTxt(plate_name, f"p{START_PAGE}b{base}", wf["h"])
-            sendImg(plate_name, f"p{START_PAGE}b{base + 1}", wf["icon"])
-            sendTxt(plate_name, f"p{START_PAGE}b{base + 2}", formatT(wf["temp"]))
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_color", "white")
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_dir", "1")
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_grad_color", "#40FFFF")
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_main_stop", "100")
+            sendTxt(plate_name, f"p{start_page}b{base}", wf["h"])
+            sendImg(plate_name, f"p{start_page}b{base + 1}", wf["icon"])
+            sendTxt(plate_name, f"p{start_page}b{base + 2}", formatT(wf["temp"]))
+            sendProp(plate_name, f"p{start_page}b{base + 2}", "bg_color", "white")
+            sendProp(plate_name, f"p{start_page}b{base + 2}", "bg_grad_dir", "1")
+            sendProp(plate_name, f"p{start_page}b{base + 2}", "bg_grad_color", "#40FFFF")
+            sendProp(plate_name, f"p{start_page}b{base + 2}", "bg_main_stop", "100")
             raining = wf["precipitation"]
-            sendProp(plate_name, f"p{START_PAGE}b{base + 2}", "bg_opa", "80" if raining else "0")
+            sendProp(plate_name, f"p{start_page}b{base + 2}", "bg_opa", "80" if raining else "0")
             
             try:
                 t = float(wf["temp"])
@@ -565,11 +589,11 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             y = int(round(v, 0))
             points.append([x, y])
             base = 60 + (i * 3)
-            sendProp(plate_name, f"p{START_PAGE}b{base + 1}", "y", y + screenImageTLOffset)
+            sendProp(plate_name, f"p{start_page}b{base + 1}", "y", str(y + screenImageTLOffset))
             x += screenXStep
             i += 1
         # the temp line graph
-        sendProp(plate_name, f"p{START_PAGE}b41", "points", str(points))
+        sendProp(plate_name, f"p{start_page}b41", "points", str(points))
         
         # ##### week overview page ######
         tMin = None
@@ -581,11 +605,11 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             except:
                 wf = {"wd": "??", "day": "??", "temp_min": None, "temp_max": None, "desc": "None", "icon": "p3j", "precipitation": 0}
             base = 20 + (i * 10)
-            sendTxt(plate_name, f"p{START_PAGE + 1}b{base}", wf["wd"])
-            sendTxt(plate_name, f"p{START_PAGE + 1}b{base + 1}", wf["day"])
-            sendImg(plate_name, f"p{START_PAGE + 1}b{base + 2}", wf["icon"])
-            sendTxt(plate_name, f"p{START_PAGE + 1}b{base + 5}", formatT(wf["temp_min"]))
-            sendTxt(plate_name, f"p{START_PAGE + 1}b{base + 3}", formatT(wf["temp_max"]))
+            sendTxt(plate_name, f"p{start_page + 1}b{base}", wf["wd"])
+            sendTxt(plate_name, f"p{start_page + 1}b{base + 1}", wf["day"])
+            sendImg(plate_name, f"p{start_page + 1}b{base + 2}", wf["icon"])
+            sendTxt(plate_name, f"p{start_page + 1}b{base + 5}", formatT(wf["temp_min"]))
+            sendTxt(plate_name, f"p{start_page + 1}b{base + 3}", formatT(wf["temp_max"]))
             try:
                 t = float(wf["temp_min"])
                 ti = int(round(t, 0))
@@ -653,8 +677,8 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
                 if temp_max is None:
                     temp_max = tMax
                     
-                y_max = int(round(screenTL + (scaleFactor * (tMax - temp_max)), 0))
-                y_min = int(round(screenTL + (scaleFactor * (tMax - temp_min)), 0)) + min_height
+                y_max = int(round(screenTL + (scaleFactor * (tMax - temp_max)), 0))  # type: ignore
+                y_min = int(round(screenTL + (scaleFactor * (tMax - temp_min)), 0)) + min_height  # type: ignore
             else:
                 y_max = screenTL
                 y_min = screenTL + screenTRange + min_height
@@ -663,7 +687,7 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             arr = []
             arr.append([x, y_max])
             arr.append([x, y_min])
-            sendProp(plate_name, f"p{START_PAGE + 1}b{base + 6}", "points", str(arr))
+            sendProp(plate_name, f"p{start_page + 1}b{base + 6}", "points", str(arr))
 
         # ###### day detail pages ######
         # day partials
@@ -671,8 +695,8 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
             offset = 1 
         else:
             offset = 0
-        for section in range(0, NR_DAYS_DETAIL):
-            p = START_PAGE + 2 + section
+        for section in range(0, nr_detail_pages):
+            p = start_page + 2 + section
             
             if (section + offset) not in d["partials"]:
                 wf = {}
@@ -695,7 +719,7 @@ def sendDataToHASP(d: dict, plate_name: str = "plate") -> bool:
     
     except Exception as e:
         exc_type, exc_obj, exc_tb = sys.exc_info()
-        print(f"Exception on sending: {str(e)} at line {exc_tb.tb_lineno}") 
+        print(f"Exception on sending: {str(e)} at line {exc_tb.tb_lineno}")  # type: ignore
         return False   
     
     if not DEBUGME:
@@ -710,15 +734,32 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
         plate_name = sys.argv[1]
     else:
-        plate_name = PLATE_NAME
+        plate_name = None
         
     r = get_forecast(CITY)
     if DEBUGME:
         print("************ outcome")
         print(json.dumps(r, indent=1))
-    
-    if r["ok"]:
-        v = sendDataToHASP(r, plate_name)
-        if v:
-            exit(0)
-    exit(1)
+        exit(1)
+    else:
+        retv = False
+        if r["ok"]:
+            retv = True
+            if plate_name is None:
+                for k, v in plate_config.items():
+                    if not sendDataToHASP(r, k, v["start_page"], v["nr_days_detail"], v["extra_tempnow"], v["extra_iconnow"]):
+                        retv = False
+            else:
+                if plate_name not in plate_config:
+                    print(f"Plate {plate_name} not in config")
+                    exit(1)
+                k = plate_name
+                v = plate_config.get(plate_name)
+                if v is None:
+                    print(f"Plate {plate_name} not in config")
+                    exit(1)
+                retv = sendDataToHASP(r, k, v["start_page"], v["nr_days_detail"], v["extra_tempnow"], v["extra_iconnow"])
+        if not retv:
+            print("Error sending data")
+            exit(1)
+    exit(0)
