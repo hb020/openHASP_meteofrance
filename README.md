@@ -50,11 +50,30 @@ See the variable at the top of the file for configurables, the most important be
 MQTTSERVER = "192.168.4.20"
 CITY = "Paris"
 PLATE_NAME = "plate01"
-START_PAGE = 2
-NR_DAYS_DETAIL = 4
 ```
 
-If you change CITY, START_PAGE or NR_DAYS_DETAIL, you will of course need to adapt the contents of the jsonl.
+and the page configuration having the configuration of 1 or more displays:
+
+```python
+plate_config = {
+    "plate01": {
+        "start_page": 2,  # the page number for the main weather page
+        "nr_days_detail": 4,  # the number of pages with detail weather
+        "extra_tempnow": "p11b7",  # the element to which to replicate temp now
+        "extra_iconnow": "p11b6"  # the element to which to replicate weather icon now
+    },
+    "plate02": {
+        "start_page": 3,
+        "nr_days_detail": 4,
+        "extra_tempnow": "p12b7",  # the element to which to replicate temp now
+        "extra_iconnow": "p12b6"  # the element to which to replicate weather icon now
+    }
+}
+```
+
+Adapt to your needs. You will of course need to match this with your display(s).
+
+`extra_tempnow`, `extra_iconnow` are used to replicate the temperature and weather to other pages (I have it on the 'idle' screen).
 
 # How to get new images
 
@@ -63,4 +82,3 @@ If you change CITY, START_PAGE or NR_DAYS_DETAIL, you will of course need to ada
   * I did that on line, following the indications on the openHASP site. Just be aware that the online tool can only handle about 12 files at a time.
   * put the resulting ```.bin``` files in ```/files```
   * upload the bin files to the device
-
