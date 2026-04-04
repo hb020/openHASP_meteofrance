@@ -1,0 +1,1362 @@
+2026-04-04 09:49:49,585 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 09:49:49,586 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 09:49:49,589 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: debug
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: true
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Paris
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  scan_interval: 15
+
+2026-04-04 09:49:49,589 INFO [root] MQTT mock mode enabled. Data will not be sent to MQTT, but will be logged at info level.
+2026-04-04 09:49:49,589 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 09:49:49,593 DEBUG [urllib3.connectionpool] Starting new HTTPS connection (1): webservice.meteofrance.com:443
+2026-04-04 09:49:49,952 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /places?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&q=Paris HTTP/1.1" 200 None
+2026-04-04 09:49:50,000 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=48.86&lon=2.34444&lang=fr HTTP/1.1" 200 None
+2026-04-04 09:49:50,043 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v3/rain?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=48.86&lon=2.34444&lang=fr&formatDate=timestamp HTTP/1.1" 200 1021
+2026-04-04 09:49:50,138 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v2/forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=48.86&lon=2.34444&lang=fr&formatDate=timestamp&instants=morning%2Cafternoon%2Cevening%2Cnight HTTP/1.1" 200 None
+2026-04-04 09:49:50,143 INFO [root] ************ outcome
+2026-04-04 09:49:50,144 INFO [root] {
+ "days": [
+  {
+   "wd": "Sam",
+   "day": "04",
+   "temp_min": 11.9,
+   "temp_max": 18.1,
+   "desc": "Pluie faible",
+   "icon": "p12j",
+   "precipitation": 2.1
+  },
+  {
+   "wd": "Dim",
+   "day": "05",
+   "temp_min": 11.2,
+   "temp_max": 15.6,
+   "desc": "Averses faibles",
+   "icon": "p12bisj",
+   "precipitation": 0.4
+  },
+  {
+   "wd": "Lun",
+   "day": "06",
+   "temp_min": 7.6,
+   "temp_max": 17.5,
+   "desc": "Ciel clair",
+   "icon": "p1j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Mar",
+   "day": "07",
+   "temp_min": 9.1,
+   "temp_max": 23.2,
+   "desc": "Ciel clair",
+   "icon": "p1j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Mer",
+   "day": "08",
+   "temp_min": 8.1,
+   "temp_max": 24,
+   "desc": "Ensoleill\u00e9",
+   "icon": "p1j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Jeu",
+   "day": "09",
+   "temp_min": 8.1,
+   "temp_max": 23.4,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Ven",
+   "day": "10",
+   "temp_min": 7.2,
+   "temp_max": 16.9,
+   "desc": "Tr\u00e8s nuageux",
+   "icon": "p3j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Sam",
+   "day": "11",
+   "temp_min": 6.1,
+   "temp_max": 18.6,
+   "desc": "Ensoleill\u00e9",
+   "icon": "p1j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Dim",
+   "day": "12",
+   "temp_min": 6.6,
+   "temp_max": 19.5,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Lun",
+   "day": "13",
+   "temp_min": 6.7,
+   "temp_max": 18.1,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Mar",
+   "day": "14",
+   "temp_min": 7.1,
+   "temp_max": 19.1,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Mer",
+   "day": "15",
+   "temp_min": 6.5,
+   "temp_max": 20.1,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0
+  },
+  {
+   "wd": "Jeu",
+   "day": "16",
+   "temp_min": 7.7,
+   "temp_max": 19.6,
+   "desc": "Eclaircies",
+   "icon": "p2j",
+   "precipitation": 0.4
+  },
+  {
+   "wd": "Ven",
+   "day": "17",
+   "temp_min": 7.2,
+   "temp_max": 19.9,
+   "desc": "Pluie",
+   "icon": "p14j",
+   "precipitation": 1.6
+  }
+ ],
+ "now": {
+  "temp": 13.5,
+  "desc": "Couvert",
+  "icon": "p3bisj"
+ },
+ "rain": [
+  0,
+  0.0,
+  0.0,
+  0,
+  0,
+  0
+ ],
+ "hourly": {
+  "1": {
+   "h": "12H",
+   "temp": 13.9,
+   "desc": "Couvert",
+   "icon": "p3bisj",
+   "precipitation": false
+  },
+  "2": {
+   "h": "13H",
+   "temp": 15.1,
+   "desc": "Couvert",
+   "icon": "p3bisj",
+   "precipitation": false
+  },
+  "3": {
+   "h": "14H",
+   "temp": 15.2,
+   "desc": "Couvert",
+   "icon": "p3bisj",
+   "precipitation": false
+  },
+  "4": {
+   "h": "15H",
+   "temp": 16.4,
+   "desc": "Tr\u00e8s nuageux",
+   "icon": "p3j",
+   "precipitation": false
+  },
+  "5": {
+   "h": "16H",
+   "temp": 17,
+   "desc": "Ciel voil\u00e9",
+   "icon": "p4j",
+   "precipitation": false
+  },
+  "6": {
+   "h": "17H",
+   "temp": 17.9,
+   "desc": "Ciel voil\u00e9",
+   "icon": "p4j",
+   "precipitation": false
+  },
+  "7": {
+   "h": "18H",
+   "temp": 17.7,
+   "desc": "Ciel voil\u00e9",
+   "icon": "p4j",
+   "precipitation": false
+  },
+  "8": {
+   "h": "19H",
+   "temp": 17.5,
+   "desc": "Ciel voil\u00e9",
+   "icon": "p4j",
+   "precipitation": false
+  }
+ },
+ "partials": {
+  "0": {
+   "title": "Aujourd'hui, Samedi",
+   "1": {
+    "temp": 15.2,
+    "icon": "p3bisj",
+    "desc": "Couvert",
+    "part": "apr\u00e8s-midi",
+    "time": "04-04 14:00"
+   },
+   "2": {
+    "temp": 17.1,
+    "icon": "p4j",
+    "desc": "Ciel voil\u00e9",
+    "part": "soir\u00e9e",
+    "time": "04-04 20:00"
+   },
+   "3": {
+    "temp": 15.1,
+    "icon": "p1n",
+    "desc": "Ciel clair",
+    "part": "nuit",
+    "time": "05-04 02:00"
+   }
+  },
+  "1": {
+   "title": "Demain, Dimanche",
+   "0": {
+    "temp": 11.7,
+    "icon": "p4j",
+    "desc": "Ciel voil\u00e9",
+    "part": "matin",
+    "time": "05-04 08:00"
+   },
+   "1": {
+    "temp": 13.5,
+    "icon": "p3bisj",
+    "desc": "Couvert",
+    "part": "apr\u00e8s-midi",
+    "time": "05-04 14:00"
+   },
+   "2": {
+    "temp": 12.7,
+    "icon": "p3j",
+    "desc": "Tr\u00e8s nuageux",
+    "part": "soir\u00e9e",
+    "time": "05-04 20:00"
+   },
+   "3": {
+    "temp": 9,
+    "icon": "p1n",
+    "desc": "Ciel clair",
+    "part": "nuit",
+    "time": "06-04 02:00"
+   }
+  },
+  "2": {
+   "title": "Apr\u00e8s demain, Lundi",
+   "0": {
+    "temp": 7.7,
+    "icon": "p1j",
+    "desc": "Ciel clair",
+    "part": "matin",
+    "time": "06-04 08:00"
+   },
+   "1": {
+    "temp": 15.5,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "apr\u00e8s-midi",
+    "time": "06-04 14:00"
+   },
+   "2": {
+    "temp": 16.1,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "soir\u00e9e",
+    "time": "06-04 20:00"
+   },
+   "3": {
+    "temp": 11.6,
+    "icon": "p1n",
+    "desc": "Ciel clair",
+    "part": "nuit",
+    "time": "07-04 02:00"
+   }
+  },
+  "3": {
+   "title": "Dans 3 jours, Mardi",
+   "0": {
+    "temp": 9.6,
+    "icon": "p1j",
+    "desc": "Ciel clair",
+    "part": "matin",
+    "time": "07-04 08:00"
+   },
+   "1": {
+    "temp": 21.4,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "apr\u00e8s-midi",
+    "time": "07-04 14:00"
+   },
+   "2": {
+    "temp": 21.6,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "soir\u00e9e",
+    "time": "07-04 20:00"
+   },
+   "3": {
+    "temp": 15.6,
+    "icon": "p1n",
+    "desc": "Ciel clair",
+    "part": "nuit",
+    "time": "08-04 02:00"
+   }
+  },
+  "4": {
+   "title": "Dans 4 jours, Mercredi",
+   "0": {
+    "temp": 8.9,
+    "icon": "p1j",
+    "desc": "Ciel clair",
+    "part": "matin",
+    "time": "08-04 08:00"
+   },
+   "1": {
+    "temp": 22,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "apr\u00e8s-midi",
+    "time": "08-04 14:00"
+   },
+   "2": {
+    "temp": 21.1,
+    "icon": "p1j",
+    "desc": "Ensoleill\u00e9",
+    "part": "soir\u00e9e",
+    "time": "08-04 20:00"
+   },
+   "3": {
+    "temp": 12.1,
+    "icon": "p1n",
+    "desc": "Ciel clair",
+    "part": "nuit",
+    "time": "09-04 02:00"
+   }
+  }
+ },
+ "ok": true
+}
+2026-04-04 09:49:50,144 INFO [root] Data published to MQTT.
+2026-04-04 09:49:50,145 INFO [root] Waiting 15 minutes before next scan...
+2026-04-04 09:52:14,441 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 09:52:14,442 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 09:52:14,445 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: debug
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 15
+
+2026-04-04 09:52:14,445 INFO [root] Connecting to MQTT broker...
+2026-04-04 09:52:19,456 ERROR [__main__] An error occured while running meteofrance2openhasp: Traceback (most recent call last):
+  File "/app/meteofrance2openhasp/__main__.py", line 119, in main
+    bridge.run()
+    ~~~~~~~~~~^^
+  File "/app/meteofrance2openhasp/bridge.py", line 77, in run
+    self._mqtt_client.connect(self._mqtt_broker, self._mqtt_port, self._mqtt_keepalive)  # type: ignore
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/site-packages/paho/mqtt/client.py", line 1435, in connect
+    return self.reconnect()
+           ~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/site-packages/paho/mqtt/client.py", line 1598, in reconnect
+    self._sock = self._create_socket()
+                 ~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.14/site-packages/paho/mqtt/client.py", line 4609, in _create_socket
+    sock = self._create_socket_connection()
+  File "/usr/local/lib/python3.14/site-packages/paho/mqtt/client.py", line 4640, in _create_socket_connection
+    return socket.create_connection(addr, timeout=self._connect_timeout, source_address=source)
+           ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.14/socket.py", line 870, in create_connection
+    raise exceptions[0]
+  File "/usr/local/lib/python3.14/socket.py", line 855, in create_connection
+    sock.connect(sa)
+    ~~~~~~~~~~~~^^^^
+TimeoutError: timed out
+
+2026-04-04 09:52:20,539 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 09:52:20,540 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 09:52:20,543 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: debug
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 15
+
+2026-04-04 09:52:20,544 INFO [root] Connecting to MQTT broker...
+2026-04-04 09:52:54,862 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 09:52:54,862 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 09:52:54,866 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: debug
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 15
+
+2026-04-04 09:52:54,866 INFO [root] Connecting to MQTT broker...
+2026-04-04 09:52:54,873 INFO [root] Connected to MQTT broker.
+2026-04-04 09:52:54,874 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 09:52:54,876 INFO [root] Connected to MQTT broker with result code Success
+2026-04-04 09:52:54,880 DEBUG [urllib3.connectionpool] Starting new HTTPS connection (1): webservice.meteofrance.com:443
+2026-04-04 09:52:55,237 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /places?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&q=Plouvain HTTP/1.1" 200 143
+2026-04-04 09:52:55,281 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr HTTP/1.1" 200 None
+2026-04-04 09:52:55,327 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v3/rain?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr&formatDate=timestamp HTTP/1.1" 200 1003
+2026-04-04 09:52:55,412 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v2/forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr&formatDate=timestamp&instants=morning%2Cafternoon%2Cevening%2Cnight HTTP/1.1" 200 None
+2026-04-04 09:52:55,565 INFO [root] Data published to MQTT.
+2026-04-04 09:52:55,566 INFO [root] Waiting 15 minutes before next scan...
+2026-04-04 09:57:32,894 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 09:57:32,894 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 09:57:32,898 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: debug
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 15
+
+2026-04-04 09:57:32,898 INFO [root] Connecting to MQTT broker...
+2026-04-04 09:57:32,905 INFO [root] Connected to MQTT broker.
+2026-04-04 09:57:32,906 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 09:57:32,908 INFO [root] Connected to MQTT broker with result code Success
+2026-04-04 09:57:32,912 DEBUG [urllib3.connectionpool] Starting new HTTPS connection (1): webservice.meteofrance.com:443
+2026-04-04 09:57:33,090 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /places?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&q=Plouvain HTTP/1.1" 200 143
+2026-04-04 09:57:33,150 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr HTTP/1.1" 200 None
+2026-04-04 09:57:33,199 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v3/rain?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr&formatDate=timestamp HTTP/1.1" 200 1003
+2026-04-04 09:57:33,281 DEBUG [urllib3.connectionpool] https://webservice.meteofrance.com:443 "GET /v2/forecast?token=__Wj7dVSTjV9YGu1guveLyDq0g7S7TfTjaHBTPTpO0kj8__&lat=50.30579&lon=2.92494&lang=fr&formatDate=timestamp&instants=morning%2Cafternoon%2Cevening%2Cnight HTTP/1.1" 200 None
+2026-04-04 09:57:33,287 DEBUG [root] hasp/plate01/command/p2b6.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,290 DEBUG [root] hasp/plate01/command/p11b6.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,291 DEBUG [root] hasp/plate01/command/p2b7.text: "13°"
+2026-04-04 09:57:33,293 DEBUG [root] hasp/plate01/command/p11b7.text: "13°"
+2026-04-04 09:57:33,295 DEBUG [root] hasp/plate01/command/p2b8.text: "Averses faibles"
+2026-04-04 09:57:33,296 DEBUG [root] hasp/plate01/command/p2b11.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,298 DEBUG [root] hasp/plate01/command/p2b12.text: "10°"
+2026-04-04 09:57:33,300 DEBUG [root] hasp/plate01/command/p2b14.text: "17°"
+2026-04-04 09:57:33,302 DEBUG [root] hasp/plate01/command/p2b15.text: "Averses faibles"
+2026-04-04 09:57:33,304 DEBUG [root] hasp/plate01/command/p2b21.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,306 DEBUG [root] hasp/plate01/command/p2b22.text: "10°"
+2026-04-04 09:57:33,309 DEBUG [root] hasp/plate01/command/p2b24.text: "13°"
+2026-04-04 09:57:33,310 DEBUG [root] hasp/plate01/command/p2b25.text: "Averses faibles"
+2026-04-04 09:57:33,312 DEBUG [root] hasp/plate01/command/p2b35.h: "26"
+2026-04-04 09:57:33,313 DEBUG [root] hasp/plate01/command/p2b36.h: "26"
+2026-04-04 09:57:33,314 DEBUG [root] hasp/plate01/command/p2b37.h: "26"
+2026-04-04 09:57:33,315 DEBUG [root] hasp/plate01/command/p2b38.h: "26"
+2026-04-04 09:57:33,317 DEBUG [root] hasp/plate01/command/p2b39.h: "26"
+2026-04-04 09:57:33,319 DEBUG [root] hasp/plate01/command/p2b40.h: "26"
+2026-04-04 09:57:33,322 DEBUG [root] hasp/plate01/command/p2b42.hidden: "False"
+2026-04-04 09:57:33,324 DEBUG [root] hasp/plate01/command/p2b60.text: "12H"
+2026-04-04 09:57:33,326 DEBUG [root] hasp/plate01/command/p2b61.src: "L:/p13bisj.bin"
+2026-04-04 09:57:33,328 DEBUG [root] hasp/plate01/command/p2b62.text: "14°"
+2026-04-04 09:57:33,330 DEBUG [root] hasp/plate01/command/p2b62.bg_color: "white"
+2026-04-04 09:57:33,331 DEBUG [root] hasp/plate01/command/p2b62.bg_grad_dir: "1"
+2026-04-04 09:57:33,333 DEBUG [root] hasp/plate01/command/p2b62.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,334 DEBUG [root] hasp/plate01/command/p2b62.bg_main_stop: "100"
+2026-04-04 09:57:33,336 DEBUG [root] hasp/plate01/command/p2b62.bg_opa: "80"
+2026-04-04 09:57:33,339 DEBUG [root] hasp/plate01/command/p2b63.text: "13H"
+2026-04-04 09:57:33,341 DEBUG [root] hasp/plate01/command/p2b64.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,343 DEBUG [root] hasp/plate01/command/p2b65.text: "14°"
+2026-04-04 09:57:33,344 DEBUG [root] hasp/plate01/command/p2b65.bg_color: "white"
+2026-04-04 09:57:33,346 DEBUG [root] hasp/plate01/command/p2b65.bg_grad_dir: "1"
+2026-04-04 09:57:33,348 DEBUG [root] hasp/plate01/command/p2b65.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,349 DEBUG [root] hasp/plate01/command/p2b65.bg_main_stop: "100"
+2026-04-04 09:57:33,351 DEBUG [root] hasp/plate01/command/p2b65.bg_opa: "0"
+2026-04-04 09:57:33,353 DEBUG [root] hasp/plate01/command/p2b66.text: "14H"
+2026-04-04 09:57:33,355 DEBUG [root] hasp/plate01/command/p2b67.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,358 DEBUG [root] hasp/plate01/command/p2b68.text: "15°"
+2026-04-04 09:57:33,360 DEBUG [root] hasp/plate01/command/p2b68.bg_color: "white"
+2026-04-04 09:57:33,362 DEBUG [root] hasp/plate01/command/p2b68.bg_grad_dir: "1"
+2026-04-04 09:57:33,364 DEBUG [root] hasp/plate01/command/p2b68.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,365 DEBUG [root] hasp/plate01/command/p2b68.bg_main_stop: "100"
+2026-04-04 09:57:33,367 DEBUG [root] hasp/plate01/command/p2b68.bg_opa: "0"
+2026-04-04 09:57:33,369 DEBUG [root] hasp/plate01/command/p2b69.text: "15H"
+2026-04-04 09:57:33,371 DEBUG [root] hasp/plate01/command/p2b70.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,373 DEBUG [root] hasp/plate01/command/p2b71.text: "16°"
+2026-04-04 09:57:33,375 DEBUG [root] hasp/plate01/command/p2b71.bg_color: "white"
+2026-04-04 09:57:33,376 DEBUG [root] hasp/plate01/command/p2b71.bg_grad_dir: "1"
+2026-04-04 09:57:33,378 DEBUG [root] hasp/plate01/command/p2b71.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,379 DEBUG [root] hasp/plate01/command/p2b71.bg_main_stop: "100"
+2026-04-04 09:57:33,382 DEBUG [root] hasp/plate01/command/p2b71.bg_opa: "0"
+2026-04-04 09:57:33,384 DEBUG [root] hasp/plate01/command/p2b72.text: "16H"
+2026-04-04 09:57:33,386 DEBUG [root] hasp/plate01/command/p2b73.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,388 DEBUG [root] hasp/plate01/command/p2b74.text: "17°"
+2026-04-04 09:57:33,389 DEBUG [root] hasp/plate01/command/p2b74.bg_color: "white"
+2026-04-04 09:57:33,390 DEBUG [root] hasp/plate01/command/p2b74.bg_grad_dir: "1"
+2026-04-04 09:57:33,391 DEBUG [root] hasp/plate01/command/p2b74.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,393 DEBUG [root] hasp/plate01/command/p2b74.bg_main_stop: "100"
+2026-04-04 09:57:33,395 DEBUG [root] hasp/plate01/command/p2b74.bg_opa: "0"
+2026-04-04 09:57:33,397 DEBUG [root] hasp/plate01/command/p2b75.text: "17H"
+2026-04-04 09:57:33,398 DEBUG [root] hasp/plate01/command/p2b76.src: "L:/p3j.bin"
+2026-04-04 09:57:33,400 DEBUG [root] hasp/plate01/command/p2b77.text: "17°"
+2026-04-04 09:57:33,403 DEBUG [root] hasp/plate01/command/p2b77.bg_color: "white"
+2026-04-04 09:57:33,406 DEBUG [root] hasp/plate01/command/p2b77.bg_grad_dir: "1"
+2026-04-04 09:57:33,408 DEBUG [root] hasp/plate01/command/p2b77.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,409 DEBUG [root] hasp/plate01/command/p2b77.bg_main_stop: "100"
+2026-04-04 09:57:33,411 DEBUG [root] hasp/plate01/command/p2b77.bg_opa: "0"
+2026-04-04 09:57:33,413 DEBUG [root] hasp/plate01/command/p2b78.text: "18H"
+2026-04-04 09:57:33,415 DEBUG [root] hasp/plate01/command/p2b79.src: "L:/p4j.bin"
+2026-04-04 09:57:33,417 DEBUG [root] hasp/plate01/command/p2b80.text: "17°"
+2026-04-04 09:57:33,419 DEBUG [root] hasp/plate01/command/p2b80.bg_color: "white"
+2026-04-04 09:57:33,421 DEBUG [root] hasp/plate01/command/p2b80.bg_grad_dir: "1"
+2026-04-04 09:57:33,423 DEBUG [root] hasp/plate01/command/p2b80.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,426 DEBUG [root] hasp/plate01/command/p2b80.bg_main_stop: "100"
+2026-04-04 09:57:33,429 DEBUG [root] hasp/plate01/command/p2b80.bg_opa: "0"
+2026-04-04 09:57:33,430 DEBUG [root] hasp/plate01/command/p2b81.text: "19H"
+2026-04-04 09:57:33,433 DEBUG [root] hasp/plate01/command/p2b82.src: "L:/p4j.bin"
+2026-04-04 09:57:33,434 DEBUG [root] hasp/plate01/command/p2b83.text: "16°"
+2026-04-04 09:57:33,437 DEBUG [root] hasp/plate01/command/p2b83.bg_color: "white"
+2026-04-04 09:57:33,438 DEBUG [root] hasp/plate01/command/p2b83.bg_grad_dir: "1"
+2026-04-04 09:57:33,439 DEBUG [root] hasp/plate01/command/p2b83.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,441 DEBUG [root] hasp/plate01/command/p2b83.bg_main_stop: "100"
+2026-04-04 09:57:33,443 DEBUG [root] hasp/plate01/command/p2b83.bg_opa: "0"
+2026-04-04 09:57:33,445 DEBUG [root] hasp/plate01/command/p2b61.y: "255"
+2026-04-04 09:57:33,446 DEBUG [root] hasp/plate01/command/p2b64.y: "255"
+2026-04-04 09:57:33,447 DEBUG [root] hasp/plate01/command/p2b67.y: "250"
+2026-04-04 09:57:33,450 DEBUG [root] hasp/plate01/command/p2b70.y: "245"
+2026-04-04 09:57:33,451 DEBUG [root] hasp/plate01/command/p2b73.y: "240"
+2026-04-04 09:57:33,453 DEBUG [root] hasp/plate01/command/p2b76.y: "240"
+2026-04-04 09:57:33,455 DEBUG [root] hasp/plate01/command/p2b79.y: "240"
+2026-04-04 09:57:33,457 DEBUG [root] hasp/plate01/command/p2b82.y: "245"
+2026-04-04 09:57:33,463 DEBUG [root] hasp/plate01/command/p2b41.points: "[[30, 280], [90, 280], [150, 275], [210, 270], [270, 265], [330, 265], [390, 265], [450, 270]]"
+2026-04-04 09:57:33,465 DEBUG [root] hasp/plate01/command/p3b20.text: "Sam"
+2026-04-04 09:57:33,468 DEBUG [root] hasp/plate01/command/p3b21.text: "04"
+2026-04-04 09:57:33,469 DEBUG [root] hasp/plate01/command/p3b22.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,470 DEBUG [root] hasp/plate01/command/p3b25.text: "10°"
+2026-04-04 09:57:33,471 DEBUG [root] hasp/plate01/command/p3b23.text: "17°"
+2026-04-04 09:57:33,472 DEBUG [root] hasp/plate01/command/p3b30.text: "Dim"
+2026-04-04 09:57:33,474 DEBUG [root] hasp/plate01/command/p3b31.text: "05"
+2026-04-04 09:57:33,476 DEBUG [root] hasp/plate01/command/p3b32.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,478 DEBUG [root] hasp/plate01/command/p3b35.text: "10°"
+2026-04-04 09:57:33,480 DEBUG [root] hasp/plate01/command/p3b33.text: "13°"
+2026-04-04 09:57:33,483 DEBUG [root] hasp/plate01/command/p3b40.text: "Lun"
+2026-04-04 09:57:33,485 DEBUG [root] hasp/plate01/command/p3b41.text: "06"
+2026-04-04 09:57:33,486 DEBUG [root] hasp/plate01/command/p3b42.src: "L:/p4j.bin"
+2026-04-04 09:57:33,488 DEBUG [root] hasp/plate01/command/p3b45.text: "2°"
+2026-04-04 09:57:33,490 DEBUG [root] hasp/plate01/command/p3b43.text: "15°"
+2026-04-04 09:57:33,492 DEBUG [root] hasp/plate01/command/p3b50.text: "Mar"
+2026-04-04 09:57:33,495 DEBUG [root] hasp/plate01/command/p3b51.text: "07"
+2026-04-04 09:57:33,497 DEBUG [root] hasp/plate01/command/p3b52.src: "L:/p1j.bin"
+2026-04-04 09:57:33,499 DEBUG [root] hasp/plate01/command/p3b55.text: "3°"
+2026-04-04 09:57:33,501 DEBUG [root] hasp/plate01/command/p3b53.text: "19°"
+2026-04-04 09:57:33,503 DEBUG [root] hasp/plate01/command/p3b60.text: "Mer"
+2026-04-04 09:57:33,505 DEBUG [root] hasp/plate01/command/p3b61.text: "08"
+2026-04-04 09:57:33,507 DEBUG [root] hasp/plate01/command/p3b62.src: "L:/p1j.bin"
+2026-04-04 09:57:33,508 DEBUG [root] hasp/plate01/command/p3b65.text: "4°"
+2026-04-04 09:57:33,509 DEBUG [root] hasp/plate01/command/p3b63.text: "21°"
+2026-04-04 09:57:33,511 DEBUG [root] hasp/plate01/command/p3b70.text: "Jeu"
+2026-04-04 09:57:33,513 DEBUG [root] hasp/plate01/command/p3b71.text: "09"
+2026-04-04 09:57:33,514 DEBUG [root] hasp/plate01/command/p3b72.src: "L:/p2j.bin"
+2026-04-04 09:57:33,517 DEBUG [root] hasp/plate01/command/p3b75.text: "7°"
+2026-04-04 09:57:33,519 DEBUG [root] hasp/plate01/command/p3b73.text: "20°"
+2026-04-04 09:57:33,520 DEBUG [root] hasp/plate01/command/p3b80.text: "Ven"
+2026-04-04 09:57:33,522 DEBUG [root] hasp/plate01/command/p3b81.text: "10"
+2026-04-04 09:57:33,523 DEBUG [root] hasp/plate01/command/p3b82.src: "L:/p3j.bin"
+2026-04-04 09:57:33,524 DEBUG [root] hasp/plate01/command/p3b85.text: "6°"
+2026-04-04 09:57:33,525 DEBUG [root] hasp/plate01/command/p3b83.text: "14°"
+2026-04-04 09:57:33,527 DEBUG [root] hasp/plate01/command/p3b90.text: "Sam"
+2026-04-04 09:57:33,529 DEBUG [root] hasp/plate01/command/p3b91.text: "11"
+2026-04-04 09:57:33,531 DEBUG [root] hasp/plate01/command/p3b92.src: "L:/p2j.bin"
+2026-04-04 09:57:33,534 DEBUG [root] hasp/plate01/command/p3b95.text: "3°"
+2026-04-04 09:57:33,536 DEBUG [root] hasp/plate01/command/p3b93.text: "15°"
+2026-04-04 09:57:33,537 DEBUG [root] hasp/plate01/command/p3b26.points: "[[29, 235], [29, 258]]"
+2026-04-04 09:57:33,539 DEBUG [root] hasp/plate01/command/p3b36.points: "[[89, 248], [89, 258]]"
+2026-04-04 09:57:33,540 DEBUG [root] hasp/plate01/command/p3b46.points: "[[149, 241], [149, 284]]"
+2026-04-04 09:57:33,541 DEBUG [root] hasp/plate01/command/p3b56.points: "[[209, 228], [209, 281]]"
+2026-04-04 09:57:33,543 DEBUG [root] hasp/plate01/command/p3b66.points: "[[269, 222], [269, 278]]"
+2026-04-04 09:57:33,544 DEBUG [root] hasp/plate01/command/p3b76.points: "[[329, 225], [329, 268]]"
+2026-04-04 09:57:33,546 DEBUG [root] hasp/plate01/command/p3b86.points: "[[389, 244], [389, 271]]"
+2026-04-04 09:57:33,547 DEBUG [root] hasp/plate01/command/p3b96.points: "[[449, 241], [449, 281]]"
+2026-04-04 09:57:33,548 DEBUG [root] hasp/plate01/command/p4b20.text: "Aujourd'hui, Samedi"
+2026-04-04 09:57:33,550 DEBUG [root] hasp/plate01/command/p4b34.hidden: "0"
+2026-04-04 09:57:33,551 DEBUG [root] hasp/plate01/command/p4b39.hidden: "1"
+2026-04-04 09:57:33,554 DEBUG [root] hasp/plate01/command/p4b36.text: "15°"
+2026-04-04 09:57:33,556 DEBUG [root] hasp/plate01/command/p4b37.src: "L:/p3bisj_big.bin"
+2026-04-04 09:57:33,558 DEBUG [root] hasp/plate01/command/p4b38.text: "Couvert"
+2026-04-04 09:57:33,560 DEBUG [root] hasp/plate01/command/p4b44.hidden: "1"
+2026-04-04 09:57:33,561 DEBUG [root] hasp/plate01/command/p4b41.text: "15°"
+2026-04-04 09:57:33,563 DEBUG [root] hasp/plate01/command/p4b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,564 DEBUG [root] hasp/plate01/command/p4b43.text: "Ciel voilé"
+2026-04-04 09:57:33,565 DEBUG [root] hasp/plate01/command/p4b49.hidden: "1"
+2026-04-04 09:57:33,568 DEBUG [root] hasp/plate01/command/p4b46.text: "13°"
+2026-04-04 09:57:33,570 DEBUG [root] hasp/plate01/command/p4b47.src: "L:/p4n_big.bin"
+2026-04-04 09:57:33,571 DEBUG [root] hasp/plate01/command/p4b48.text: "Ciel voilé"
+2026-04-04 09:57:33,573 DEBUG [root] hasp/plate01/command/p5b20.text: "Demain, Dimanche"
+2026-04-04 09:57:33,574 DEBUG [root] hasp/plate01/command/p5b34.hidden: "1"
+2026-04-04 09:57:33,576 DEBUG [root] hasp/plate01/command/p5b31.text: "11°"
+2026-04-04 09:57:33,578 DEBUG [root] hasp/plate01/command/p5b32.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,580 DEBUG [root] hasp/plate01/command/p5b33.text: "Averses faibles"
+2026-04-04 09:57:33,581 DEBUG [root] hasp/plate01/command/p5b39.hidden: "1"
+2026-04-04 09:57:33,583 DEBUG [root] hasp/plate01/command/p5b36.text: "12°"
+2026-04-04 09:57:33,584 DEBUG [root] hasp/plate01/command/p5b37.src: "L:/p3bisj_big.bin"
+2026-04-04 09:57:33,586 DEBUG [root] hasp/plate01/command/p5b38.text: "Couvert"
+2026-04-04 09:57:33,588 DEBUG [root] hasp/plate01/command/p5b44.hidden: "1"
+2026-04-04 09:57:33,590 DEBUG [root] hasp/plate01/command/p5b41.text: "10°"
+2026-04-04 09:57:33,592 DEBUG [root] hasp/plate01/command/p5b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,594 DEBUG [root] hasp/plate01/command/p5b43.text: "Ciel voilé"
+2026-04-04 09:57:33,596 DEBUG [root] hasp/plate01/command/p5b49.hidden: "1"
+2026-04-04 09:57:33,598 DEBUG [root] hasp/plate01/command/p5b46.text: "6°"
+2026-04-04 09:57:33,600 DEBUG [root] hasp/plate01/command/p5b47.src: "L:/p4n_big.bin"
+2026-04-04 09:57:33,603 DEBUG [root] hasp/plate01/command/p5b48.text: "Ciel voilé"
+2026-04-04 09:57:33,604 DEBUG [root] hasp/plate01/command/p6b20.text: "Après demain, Lundi"
+2026-04-04 09:57:33,606 DEBUG [root] hasp/plate01/command/p6b34.hidden: "1"
+2026-04-04 09:57:33,607 DEBUG [root] hasp/plate01/command/p6b31.text: "3°"
+2026-04-04 09:57:33,609 DEBUG [root] hasp/plate01/command/p6b32.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,611 DEBUG [root] hasp/plate01/command/p6b33.text: "Ciel voilé"
+2026-04-04 09:57:33,613 DEBUG [root] hasp/plate01/command/p6b39.hidden: "1"
+2026-04-04 09:57:33,614 DEBUG [root] hasp/plate01/command/p6b36.text: "13°"
+2026-04-04 09:57:33,615 DEBUG [root] hasp/plate01/command/p6b37.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,617 DEBUG [root] hasp/plate01/command/p6b38.text: "Ciel voilé"
+2026-04-04 09:57:33,618 DEBUG [root] hasp/plate01/command/p6b44.hidden: "1"
+2026-04-04 09:57:33,620 DEBUG [root] hasp/plate01/command/p6b41.text: "12°"
+2026-04-04 09:57:33,620 DEBUG [root] hasp/plate01/command/p6b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,622 DEBUG [root] hasp/plate01/command/p6b43.text: "Ciel voilé"
+2026-04-04 09:57:33,623 DEBUG [root] hasp/plate01/command/p6b49.hidden: "1"
+2026-04-04 09:57:33,624 DEBUG [root] hasp/plate01/command/p6b46.text: "6°"
+2026-04-04 09:57:33,625 DEBUG [root] hasp/plate01/command/p6b47.src: "L:/p1n_big.bin"
+2026-04-04 09:57:33,626 DEBUG [root] hasp/plate01/command/p6b48.text: "Ciel clair"
+2026-04-04 09:57:33,628 DEBUG [root] hasp/plate01/command/p7b20.text: "Dans 3 jours, Mardi"
+2026-04-04 09:57:33,629 DEBUG [root] hasp/plate01/command/p7b34.hidden: "1"
+2026-04-04 09:57:33,630 DEBUG [root] hasp/plate01/command/p7b31.text: "4°"
+2026-04-04 09:57:33,632 DEBUG [root] hasp/plate01/command/p7b32.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,633 DEBUG [root] hasp/plate01/command/p7b33.text: "Ciel clair"
+2026-04-04 09:57:33,634 DEBUG [root] hasp/plate01/command/p7b39.hidden: "1"
+2026-04-04 09:57:33,635 DEBUG [root] hasp/plate01/command/p7b36.text: "17°"
+2026-04-04 09:57:33,636 DEBUG [root] hasp/plate01/command/p7b37.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,637 DEBUG [root] hasp/plate01/command/p7b38.text: "Ensoleillé"
+2026-04-04 09:57:33,639 DEBUG [root] hasp/plate01/command/p7b44.hidden: "1"
+2026-04-04 09:57:33,640 DEBUG [root] hasp/plate01/command/p7b41.text: "16°"
+2026-04-04 09:57:33,642 DEBUG [root] hasp/plate01/command/p7b42.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,643 DEBUG [root] hasp/plate01/command/p7b43.text: "Ensoleillé"
+2026-04-04 09:57:33,645 DEBUG [root] hasp/plate01/command/p7b49.hidden: "1"
+2026-04-04 09:57:33,645 DEBUG [root] hasp/plate01/command/p7b46.text: "8°"
+2026-04-04 09:57:33,646 DEBUG [root] hasp/plate01/command/p7b47.src: "L:/p1n_big.bin"
+2026-04-04 09:57:33,647 DEBUG [root] hasp/plate01/command/p7b48.text: "Ciel clair"
+2026-04-04 09:57:33,649 DEBUG [root] hasp/plate02/command/p3b6.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,650 DEBUG [root] hasp/plate02/command/p12b6.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,651 DEBUG [root] hasp/plate02/command/p3b7.text: "13°"
+2026-04-04 09:57:33,652 DEBUG [root] hasp/plate02/command/p12b7.text: "13°"
+2026-04-04 09:57:33,654 DEBUG [root] hasp/plate02/command/p3b8.text: "Averses faibles"
+2026-04-04 09:57:33,656 DEBUG [root] hasp/plate02/command/p3b11.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,657 DEBUG [root] hasp/plate02/command/p3b12.text: "10°"
+2026-04-04 09:57:33,658 DEBUG [root] hasp/plate02/command/p3b14.text: "17°"
+2026-04-04 09:57:33,659 DEBUG [root] hasp/plate02/command/p3b15.text: "Averses faibles"
+2026-04-04 09:57:33,660 DEBUG [root] hasp/plate02/command/p3b21.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,662 DEBUG [root] hasp/plate02/command/p3b22.text: "10°"
+2026-04-04 09:57:33,663 DEBUG [root] hasp/plate02/command/p3b24.text: "13°"
+2026-04-04 09:57:33,664 DEBUG [root] hasp/plate02/command/p3b25.text: "Averses faibles"
+2026-04-04 09:57:33,665 DEBUG [root] hasp/plate02/command/p3b35.h: "26"
+2026-04-04 09:57:33,667 DEBUG [root] hasp/plate02/command/p3b36.h: "26"
+2026-04-04 09:57:33,668 DEBUG [root] hasp/plate02/command/p3b37.h: "26"
+2026-04-04 09:57:33,669 DEBUG [root] hasp/plate02/command/p3b38.h: "26"
+2026-04-04 09:57:33,670 DEBUG [root] hasp/plate02/command/p3b39.h: "26"
+2026-04-04 09:57:33,671 DEBUG [root] hasp/plate02/command/p3b40.h: "26"
+2026-04-04 09:57:33,672 DEBUG [root] hasp/plate02/command/p3b42.hidden: "False"
+2026-04-04 09:57:33,674 DEBUG [root] hasp/plate02/command/p3b60.text: "12H"
+2026-04-04 09:57:33,675 DEBUG [root] hasp/plate02/command/p3b61.src: "L:/p13bisj.bin"
+2026-04-04 09:57:33,677 DEBUG [root] hasp/plate02/command/p3b62.text: "14°"
+2026-04-04 09:57:33,678 DEBUG [root] hasp/plate02/command/p3b62.bg_color: "white"
+2026-04-04 09:57:33,679 DEBUG [root] hasp/plate02/command/p3b62.bg_grad_dir: "1"
+2026-04-04 09:57:33,680 DEBUG [root] hasp/plate02/command/p3b62.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,682 DEBUG [root] hasp/plate02/command/p3b62.bg_main_stop: "100"
+2026-04-04 09:57:33,683 DEBUG [root] hasp/plate02/command/p3b62.bg_opa: "80"
+2026-04-04 09:57:33,684 DEBUG [root] hasp/plate02/command/p3b63.text: "13H"
+2026-04-04 09:57:33,686 DEBUG [root] hasp/plate02/command/p3b64.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,687 DEBUG [root] hasp/plate02/command/p3b65.text: "14°"
+2026-04-04 09:57:33,689 DEBUG [root] hasp/plate02/command/p3b65.bg_color: "white"
+2026-04-04 09:57:33,690 DEBUG [root] hasp/plate02/command/p3b65.bg_grad_dir: "1"
+2026-04-04 09:57:33,691 DEBUG [root] hasp/plate02/command/p3b65.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,693 DEBUG [root] hasp/plate02/command/p3b65.bg_main_stop: "100"
+2026-04-04 09:57:33,694 DEBUG [root] hasp/plate02/command/p3b65.bg_opa: "0"
+2026-04-04 09:57:33,695 DEBUG [root] hasp/plate02/command/p3b66.text: "14H"
+2026-04-04 09:57:33,696 DEBUG [root] hasp/plate02/command/p3b67.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,699 DEBUG [root] hasp/plate02/command/p3b68.text: "15°"
+2026-04-04 09:57:33,700 DEBUG [root] hasp/plate02/command/p3b68.bg_color: "white"
+2026-04-04 09:57:33,702 DEBUG [root] hasp/plate02/command/p3b68.bg_grad_dir: "1"
+2026-04-04 09:57:33,703 DEBUG [root] hasp/plate02/command/p3b68.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,704 DEBUG [root] hasp/plate02/command/p3b68.bg_main_stop: "100"
+2026-04-04 09:57:33,705 DEBUG [root] hasp/plate02/command/p3b68.bg_opa: "0"
+2026-04-04 09:57:33,706 DEBUG [root] hasp/plate02/command/p3b69.text: "15H"
+2026-04-04 09:57:33,707 DEBUG [root] hasp/plate02/command/p3b70.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,709 DEBUG [root] hasp/plate02/command/p3b71.text: "16°"
+2026-04-04 09:57:33,710 DEBUG [root] hasp/plate02/command/p3b71.bg_color: "white"
+2026-04-04 09:57:33,712 DEBUG [root] hasp/plate02/command/p3b71.bg_grad_dir: "1"
+2026-04-04 09:57:33,713 DEBUG [root] hasp/plate02/command/p3b71.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,714 DEBUG [root] hasp/plate02/command/p3b71.bg_main_stop: "100"
+2026-04-04 09:57:33,715 DEBUG [root] hasp/plate02/command/p3b71.bg_opa: "0"
+2026-04-04 09:57:33,717 DEBUG [root] hasp/plate02/command/p3b72.text: "16H"
+2026-04-04 09:57:33,718 DEBUG [root] hasp/plate02/command/p3b73.src: "L:/p3bisj.bin"
+2026-04-04 09:57:33,719 DEBUG [root] hasp/plate02/command/p3b74.text: "17°"
+2026-04-04 09:57:33,720 DEBUG [root] hasp/plate02/command/p3b74.bg_color: "white"
+2026-04-04 09:57:33,722 DEBUG [root] hasp/plate02/command/p3b74.bg_grad_dir: "1"
+2026-04-04 09:57:33,723 DEBUG [root] hasp/plate02/command/p3b74.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,724 DEBUG [root] hasp/plate02/command/p3b74.bg_main_stop: "100"
+2026-04-04 09:57:33,725 DEBUG [root] hasp/plate02/command/p3b74.bg_opa: "0"
+2026-04-04 09:57:33,727 DEBUG [root] hasp/plate02/command/p3b75.text: "17H"
+2026-04-04 09:57:33,729 DEBUG [root] hasp/plate02/command/p3b76.src: "L:/p3j.bin"
+2026-04-04 09:57:33,731 DEBUG [root] hasp/plate02/command/p3b77.text: "17°"
+2026-04-04 09:57:33,732 DEBUG [root] hasp/plate02/command/p3b77.bg_color: "white"
+2026-04-04 09:57:33,733 DEBUG [root] hasp/plate02/command/p3b77.bg_grad_dir: "1"
+2026-04-04 09:57:33,735 DEBUG [root] hasp/plate02/command/p3b77.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,736 DEBUG [root] hasp/plate02/command/p3b77.bg_main_stop: "100"
+2026-04-04 09:57:33,737 DEBUG [root] hasp/plate02/command/p3b77.bg_opa: "0"
+2026-04-04 09:57:33,739 DEBUG [root] hasp/plate02/command/p3b78.text: "18H"
+2026-04-04 09:57:33,741 DEBUG [root] hasp/plate02/command/p3b79.src: "L:/p4j.bin"
+2026-04-04 09:57:33,743 DEBUG [root] hasp/plate02/command/p3b80.text: "17°"
+2026-04-04 09:57:33,745 DEBUG [root] hasp/plate02/command/p3b80.bg_color: "white"
+2026-04-04 09:57:33,746 DEBUG [root] hasp/plate02/command/p3b80.bg_grad_dir: "1"
+2026-04-04 09:57:33,747 DEBUG [root] hasp/plate02/command/p3b80.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,748 DEBUG [root] hasp/plate02/command/p3b80.bg_main_stop: "100"
+2026-04-04 09:57:33,750 DEBUG [root] hasp/plate02/command/p3b80.bg_opa: "0"
+2026-04-04 09:57:33,751 DEBUG [root] hasp/plate02/command/p3b81.text: "19H"
+2026-04-04 09:57:33,753 DEBUG [root] hasp/plate02/command/p3b82.src: "L:/p4j.bin"
+2026-04-04 09:57:33,754 DEBUG [root] hasp/plate02/command/p3b83.text: "16°"
+2026-04-04 09:57:33,755 DEBUG [root] hasp/plate02/command/p3b83.bg_color: "white"
+2026-04-04 09:57:33,756 DEBUG [root] hasp/plate02/command/p3b83.bg_grad_dir: "1"
+2026-04-04 09:57:33,758 DEBUG [root] hasp/plate02/command/p3b83.bg_grad_color: "#40FFFF"
+2026-04-04 09:57:33,759 DEBUG [root] hasp/plate02/command/p3b83.bg_main_stop: "100"
+2026-04-04 09:57:33,760 DEBUG [root] hasp/plate02/command/p3b83.bg_opa: "0"
+2026-04-04 09:57:33,761 DEBUG [root] hasp/plate02/command/p3b61.y: "255"
+2026-04-04 09:57:33,762 DEBUG [root] hasp/plate02/command/p3b64.y: "255"
+2026-04-04 09:57:33,764 DEBUG [root] hasp/plate02/command/p3b67.y: "250"
+2026-04-04 09:57:33,766 DEBUG [root] hasp/plate02/command/p3b70.y: "245"
+2026-04-04 09:57:33,768 DEBUG [root] hasp/plate02/command/p3b73.y: "240"
+2026-04-04 09:57:33,769 DEBUG [root] hasp/plate02/command/p3b76.y: "240"
+2026-04-04 09:57:33,770 DEBUG [root] hasp/plate02/command/p3b79.y: "240"
+2026-04-04 09:57:33,772 DEBUG [root] hasp/plate02/command/p3b82.y: "245"
+2026-04-04 09:57:33,773 DEBUG [root] hasp/plate02/command/p3b41.points: "[[30, 280], [90, 280], [150, 275], [210, 270], [270, 265], [330, 265], [390, 265], [450, 270]]"
+2026-04-04 09:57:33,774 DEBUG [root] hasp/plate02/command/p4b20.text: "Sam"
+2026-04-04 09:57:33,776 DEBUG [root] hasp/plate02/command/p4b21.text: "04"
+2026-04-04 09:57:33,777 DEBUG [root] hasp/plate02/command/p4b22.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,778 DEBUG [root] hasp/plate02/command/p4b25.text: "10°"
+2026-04-04 09:57:33,780 DEBUG [root] hasp/plate02/command/p4b23.text: "17°"
+2026-04-04 09:57:33,781 DEBUG [root] hasp/plate02/command/p4b30.text: "Dim"
+2026-04-04 09:57:33,783 DEBUG [root] hasp/plate02/command/p4b31.text: "05"
+2026-04-04 09:57:33,785 DEBUG [root] hasp/plate02/command/p4b32.src: "L:/p12bisj.bin"
+2026-04-04 09:57:33,786 DEBUG [root] hasp/plate02/command/p4b35.text: "10°"
+2026-04-04 09:57:33,788 DEBUG [root] hasp/plate02/command/p4b33.text: "13°"
+2026-04-04 09:57:33,789 DEBUG [root] hasp/plate02/command/p4b40.text: "Lun"
+2026-04-04 09:57:33,791 DEBUG [root] hasp/plate02/command/p4b41.text: "06"
+2026-04-04 09:57:33,792 DEBUG [root] hasp/plate02/command/p4b42.src: "L:/p4j.bin"
+2026-04-04 09:57:33,794 DEBUG [root] hasp/plate02/command/p4b45.text: "2°"
+2026-04-04 09:57:33,796 DEBUG [root] hasp/plate02/command/p4b43.text: "15°"
+2026-04-04 09:57:33,798 DEBUG [root] hasp/plate02/command/p4b50.text: "Mar"
+2026-04-04 09:57:33,800 DEBUG [root] hasp/plate02/command/p4b51.text: "07"
+2026-04-04 09:57:33,801 DEBUG [root] hasp/plate02/command/p4b52.src: "L:/p1j.bin"
+2026-04-04 09:57:33,802 DEBUG [root] hasp/plate02/command/p4b55.text: "3°"
+2026-04-04 09:57:33,803 DEBUG [root] hasp/plate02/command/p4b53.text: "19°"
+2026-04-04 09:57:33,805 DEBUG [root] hasp/plate02/command/p4b60.text: "Mer"
+2026-04-04 09:57:33,806 DEBUG [root] hasp/plate02/command/p4b61.text: "08"
+2026-04-04 09:57:33,807 DEBUG [root] hasp/plate02/command/p4b62.src: "L:/p1j.bin"
+2026-04-04 09:57:33,807 DEBUG [root] hasp/plate02/command/p4b65.text: "4°"
+2026-04-04 09:57:33,808 DEBUG [root] hasp/plate02/command/p4b63.text: "21°"
+2026-04-04 09:57:33,810 DEBUG [root] hasp/plate02/command/p4b70.text: "Jeu"
+2026-04-04 09:57:33,810 DEBUG [root] hasp/plate02/command/p4b71.text: "09"
+2026-04-04 09:57:33,811 DEBUG [root] hasp/plate02/command/p4b72.src: "L:/p2j.bin"
+2026-04-04 09:57:33,813 DEBUG [root] hasp/plate02/command/p4b75.text: "7°"
+2026-04-04 09:57:33,814 DEBUG [root] hasp/plate02/command/p4b73.text: "20°"
+2026-04-04 09:57:33,815 DEBUG [root] hasp/plate02/command/p4b80.text: "Ven"
+2026-04-04 09:57:33,816 DEBUG [root] hasp/plate02/command/p4b81.text: "10"
+2026-04-04 09:57:33,817 DEBUG [root] hasp/plate02/command/p4b82.src: "L:/p3j.bin"
+2026-04-04 09:57:33,819 DEBUG [root] hasp/plate02/command/p4b85.text: "6°"
+2026-04-04 09:57:33,820 DEBUG [root] hasp/plate02/command/p4b83.text: "14°"
+2026-04-04 09:57:33,821 DEBUG [root] hasp/plate02/command/p4b90.text: "Sam"
+2026-04-04 09:57:33,822 DEBUG [root] hasp/plate02/command/p4b91.text: "11"
+2026-04-04 09:57:33,824 DEBUG [root] hasp/plate02/command/p4b92.src: "L:/p2j.bin"
+2026-04-04 09:57:33,825 DEBUG [root] hasp/plate02/command/p4b95.text: "3°"
+2026-04-04 09:57:33,825 DEBUG [root] hasp/plate02/command/p4b93.text: "15°"
+2026-04-04 09:57:33,826 DEBUG [root] hasp/plate02/command/p4b26.points: "[[29, 235], [29, 258]]"
+2026-04-04 09:57:33,828 DEBUG [root] hasp/plate02/command/p4b36.points: "[[89, 248], [89, 258]]"
+2026-04-04 09:57:33,829 DEBUG [root] hasp/plate02/command/p4b46.points: "[[149, 241], [149, 284]]"
+2026-04-04 09:57:33,831 DEBUG [root] hasp/plate02/command/p4b56.points: "[[209, 228], [209, 281]]"
+2026-04-04 09:57:33,834 DEBUG [root] hasp/plate02/command/p4b66.points: "[[269, 222], [269, 278]]"
+2026-04-04 09:57:33,835 DEBUG [root] hasp/plate02/command/p4b76.points: "[[329, 225], [329, 268]]"
+2026-04-04 09:57:33,836 DEBUG [root] hasp/plate02/command/p4b86.points: "[[389, 244], [389, 271]]"
+2026-04-04 09:57:33,837 DEBUG [root] hasp/plate02/command/p4b96.points: "[[449, 241], [449, 281]]"
+2026-04-04 09:57:33,837 DEBUG [root] hasp/plate02/command/p5b20.text: "Aujourd'hui, Samedi"
+2026-04-04 09:57:33,839 DEBUG [root] hasp/plate02/command/p5b34.hidden: "0"
+2026-04-04 09:57:33,840 DEBUG [root] hasp/plate02/command/p5b39.hidden: "1"
+2026-04-04 09:57:33,841 DEBUG [root] hasp/plate02/command/p5b36.text: "15°"
+2026-04-04 09:57:33,842 DEBUG [root] hasp/plate02/command/p5b37.src: "L:/p3bisj_big.bin"
+2026-04-04 09:57:33,843 DEBUG [root] hasp/plate02/command/p5b38.text: "Couvert"
+2026-04-04 09:57:33,844 DEBUG [root] hasp/plate02/command/p5b44.hidden: "1"
+2026-04-04 09:57:33,846 DEBUG [root] hasp/plate02/command/p5b41.text: "15°"
+2026-04-04 09:57:33,846 DEBUG [root] hasp/plate02/command/p5b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,848 DEBUG [root] hasp/plate02/command/p5b43.text: "Ciel voilé"
+2026-04-04 09:57:33,849 DEBUG [root] hasp/plate02/command/p5b49.hidden: "1"
+2026-04-04 09:57:33,850 DEBUG [root] hasp/plate02/command/p5b46.text: "13°"
+2026-04-04 09:57:33,851 DEBUG [root] hasp/plate02/command/p5b47.src: "L:/p4n_big.bin"
+2026-04-04 09:57:33,852 DEBUG [root] hasp/plate02/command/p5b48.text: "Ciel voilé"
+2026-04-04 09:57:33,854 DEBUG [root] hasp/plate02/command/p6b20.text: "Demain, Dimanche"
+2026-04-04 09:57:33,855 DEBUG [root] hasp/plate02/command/p6b34.hidden: "1"
+2026-04-04 09:57:33,856 DEBUG [root] hasp/plate02/command/p6b31.text: "11°"
+2026-04-04 09:57:33,857 DEBUG [root] hasp/plate02/command/p6b32.src: "L:/p13bisj_big.bin"
+2026-04-04 09:57:33,858 DEBUG [root] hasp/plate02/command/p6b33.text: "Averses faibles"
+2026-04-04 09:57:33,859 DEBUG [root] hasp/plate02/command/p6b39.hidden: "1"
+2026-04-04 09:57:33,860 DEBUG [root] hasp/plate02/command/p6b36.text: "12°"
+2026-04-04 09:57:33,861 DEBUG [root] hasp/plate02/command/p6b37.src: "L:/p3bisj_big.bin"
+2026-04-04 09:57:33,863 DEBUG [root] hasp/plate02/command/p6b38.text: "Couvert"
+2026-04-04 09:57:33,864 DEBUG [root] hasp/plate02/command/p6b44.hidden: "1"
+2026-04-04 09:57:33,865 DEBUG [root] hasp/plate02/command/p6b41.text: "10°"
+2026-04-04 09:57:33,866 DEBUG [root] hasp/plate02/command/p6b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,867 DEBUG [root] hasp/plate02/command/p6b43.text: "Ciel voilé"
+2026-04-04 09:57:33,868 DEBUG [root] hasp/plate02/command/p6b49.hidden: "1"
+2026-04-04 09:57:33,869 DEBUG [root] hasp/plate02/command/p6b46.text: "6°"
+2026-04-04 09:57:33,870 DEBUG [root] hasp/plate02/command/p6b47.src: "L:/p4n_big.bin"
+2026-04-04 09:57:33,872 DEBUG [root] hasp/plate02/command/p6b48.text: "Ciel voilé"
+2026-04-04 09:57:33,873 DEBUG [root] hasp/plate02/command/p7b20.text: "Après demain, Lundi"
+2026-04-04 09:57:33,874 DEBUG [root] hasp/plate02/command/p7b34.hidden: "1"
+2026-04-04 09:57:33,876 DEBUG [root] hasp/plate02/command/p7b31.text: "3°"
+2026-04-04 09:57:33,877 DEBUG [root] hasp/plate02/command/p7b32.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,879 DEBUG [root] hasp/plate02/command/p7b33.text: "Ciel voilé"
+2026-04-04 09:57:33,880 DEBUG [root] hasp/plate02/command/p7b39.hidden: "1"
+2026-04-04 09:57:33,882 DEBUG [root] hasp/plate02/command/p7b36.text: "13°"
+2026-04-04 09:57:33,883 DEBUG [root] hasp/plate02/command/p7b37.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,884 DEBUG [root] hasp/plate02/command/p7b38.text: "Ciel voilé"
+2026-04-04 09:57:33,886 DEBUG [root] hasp/plate02/command/p7b44.hidden: "1"
+2026-04-04 09:57:33,887 DEBUG [root] hasp/plate02/command/p7b41.text: "12°"
+2026-04-04 09:57:33,888 DEBUG [root] hasp/plate02/command/p7b42.src: "L:/p4j_big.bin"
+2026-04-04 09:57:33,889 DEBUG [root] hasp/plate02/command/p7b43.text: "Ciel voilé"
+2026-04-04 09:57:33,891 DEBUG [root] hasp/plate02/command/p7b49.hidden: "1"
+2026-04-04 09:57:33,892 DEBUG [root] hasp/plate02/command/p7b46.text: "6°"
+2026-04-04 09:57:33,894 DEBUG [root] hasp/plate02/command/p7b47.src: "L:/p1n_big.bin"
+2026-04-04 09:57:33,896 DEBUG [root] hasp/plate02/command/p7b48.text: "Ciel clair"
+2026-04-04 09:57:33,897 DEBUG [root] hasp/plate02/command/p8b20.text: "Dans 3 jours, Mardi"
+2026-04-04 09:57:33,899 DEBUG [root] hasp/plate02/command/p8b34.hidden: "1"
+2026-04-04 09:57:33,900 DEBUG [root] hasp/plate02/command/p8b31.text: "4°"
+2026-04-04 09:57:33,901 DEBUG [root] hasp/plate02/command/p8b32.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,904 DEBUG [root] hasp/plate02/command/p8b33.text: "Ciel clair"
+2026-04-04 09:57:33,905 DEBUG [root] hasp/plate02/command/p8b39.hidden: "1"
+2026-04-04 09:57:33,906 DEBUG [root] hasp/plate02/command/p8b36.text: "17°"
+2026-04-04 09:57:33,908 DEBUG [root] hasp/plate02/command/p8b37.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,909 DEBUG [root] hasp/plate02/command/p8b38.text: "Ensoleillé"
+2026-04-04 09:57:33,911 DEBUG [root] hasp/plate02/command/p8b44.hidden: "1"
+2026-04-04 09:57:33,912 DEBUG [root] hasp/plate02/command/p8b41.text: "16°"
+2026-04-04 09:57:33,913 DEBUG [root] hasp/plate02/command/p8b42.src: "L:/p1j_big.bin"
+2026-04-04 09:57:33,915 DEBUG [root] hasp/plate02/command/p8b43.text: "Ensoleillé"
+2026-04-04 09:57:33,916 DEBUG [root] hasp/plate02/command/p8b49.hidden: "1"
+2026-04-04 09:57:33,917 DEBUG [root] hasp/plate02/command/p8b46.text: "8°"
+2026-04-04 09:57:33,919 DEBUG [root] hasp/plate02/command/p8b47.src: "L:/p1n_big.bin"
+2026-04-04 09:57:33,921 DEBUG [root] hasp/plate02/command/p8b48.text: "Ciel clair"
+2026-04-04 09:57:33,922 INFO [root] Data published to MQTT.
+2026-04-04 09:57:33,922 INFO [root] Waiting 15 minutes before next scan...
+2026-04-04 10:00:19,292 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 10:00:19,293 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 10:00:19,296 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: info
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 5
+
+2026-04-04 10:00:19,296 INFO [root] Connecting to MQTT broker...
+2026-04-04 10:00:19,302 INFO [root] Connected to MQTT broker.
+2026-04-04 10:00:19,303 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 10:00:19,305 INFO [root] Connected to MQTT broker with result code Success
+2026-04-04 10:00:19,816 INFO [root] Data published to MQTT.
+2026-04-04 10:00:19,817 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 10:04:40,579 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 10:04:40,580 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 10:04:40,582 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: info
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 5
+
+2026-04-04 10:04:40,583 INFO [root] Connecting to MQTT broker...
+2026-04-04 10:04:40,589 INFO [root] Connected to MQTT broker.
+2026-04-04 10:04:40,590 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 10:04:40,591 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 10:04:40,594 INFO [root] Connected to MQTT broker with result: Success
+2026-04-04 10:04:41,430 INFO [root] Sending weather data to plate plate01
+2026-04-04 10:04:41,522 INFO [root] Sending weather data to plate plate02
+2026-04-04 10:04:41,598 INFO [root] Data published to MQTT.
+2026-04-04 10:04:41,599 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:40:04,299 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 12:40:04,300 INFO [__main__] Running on Python version: 3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]
+2026-04-04 12:40:04,301 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: info
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 5
+
+2026-04-04 12:40:04,302 INFO [root] Connecting to MQTT broker...
+2026-04-04 12:40:04,322 INFO [root] Connected to MQTT broker.
+2026-04-04 12:40:04,322 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:40:04,322 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:40:04,323 INFO [root] Connected to MQTT broker with result: Success
+2026-04-04 12:40:04,976 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:40:04,998 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:40:05,021 INFO [root] Data published to MQTT.
+2026-04-04 12:40:05,022 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:40:09,470 INFO [root] Signal 2 received. Shutting down gracefully...
+2026-04-04 12:40:10,026 INFO [root] Disconnecting from MQTT broker...
+2026-04-04 12:40:10,030 INFO [root] Disconnected from broker
+2026-04-04 12:40:10,030 INFO [root] Disconnected from MQTT broker.
+2026-04-04 12:40:10,030 INFO [__main__] meteofrance2openhasp stopped.
+2026-04-04 12:41:46,627 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 12:41:46,628 INFO [__main__] Running on Python version: 3.14.3 (main, Feb  3 2026, 15:32:20) [Clang 17.0.0 (clang-1700.6.3.2)]
+2026-04-04 12:41:46,629 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: info
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 5
+
+2026-04-04 12:41:46,630 INFO [root] Connecting to MQTT broker...
+2026-04-04 12:41:46,651 INFO [root] Connected to MQTT broker.
+2026-04-04 12:41:46,651 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:41:46,652 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:41:46,654 INFO [root] Connected to MQTT broker with result: Success
+2026-04-04 12:41:47,358 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:41:47,381 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:41:47,406 INFO [root] Data published to MQTT.
+2026-04-04 12:41:47,406 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:41:49,803 INFO [root] Signal 2 received. Shutting down gracefully...
+2026-04-04 12:41:49,963 INFO [root] Signal 2 received. Shutting down gracefully...
+2026-04-04 12:41:50,127 INFO [root] Signal 2 received. Shutting down gracefully...
+2026-04-04 12:41:52,411 INFO [root] Disconnecting from MQTT broker...
+2026-04-04 12:41:52,417 INFO [root] Disconnected from broker
+2026-04-04 12:41:52,417 INFO [root] Disconnected from MQTT broker.
+2026-04-04 12:41:52,418 INFO [__main__] meteofrance2openhasp stopped.
+2026-04-04 11:01:13,578 INFO [__main__] Starting meteofrance2openhasp version 0.1.0
+2026-04-04 11:01:13,578 INFO [__main__] Running on Python version: 3.14.3 (main, Mar 17 2026, 02:14:16) [GCC 12.2.0]
+2026-04-04 11:01:13,581 INFO [__main__] Configuration:
+logging:
+  console: true
+  file: log/meteofrance2openhasp.log
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+  level: info
+mqtt:
+  base_topic: meteofrance2openhasp
+  broker: 192.168.1.12
+  keepalive: 60
+  mock: false
+  password: '******'
+  port: '1883'
+  username: ''
+sender:
+  city: Plouvain
+  plates:
+  - extra_iconnow: p11b6
+    extra_tempnow: p11b7
+    name: plate01
+    nr_days_detail: 4
+    start_page: 2
+  - extra_iconnow: p12b6
+    extra_tempnow: p12b7
+    name: plate02
+    nr_days_detail: 4
+    start_page: 3
+  scan_interval: 5
+
+2026-04-04 11:01:13,582 INFO [root] Connecting to MQTT broker...
+2026-04-04 11:01:13,589 INFO [root] Connected to MQTT broker.
+2026-04-04 11:01:13,590 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:01:13,591 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:01:13,595 INFO [root] Connected to MQTT broker with result: Success
+2026-04-04 11:01:14,070 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:01:14,150 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:01:14,228 INFO [root] Data published to MQTT.
+2026-04-04 11:01:14,229 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:06:12,194 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:06:12,195 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:06:12,560 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:06:12,690 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:06:12,825 INFO [root] Data published to MQTT.
+2026-04-04 11:06:12,826 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:11:10,381 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:11:10,381 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:11:11,343 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:11:11,488 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:11:11,610 INFO [root] Data published to MQTT.
+2026-04-04 11:11:11,610 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:16:08,847 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:16:08,848 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:16:09,187 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:16:09,266 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:16:09,346 INFO [root] Data published to MQTT.
+2026-04-04 11:16:09,347 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:21:07,146 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:21:07,147 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:21:07,501 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:21:07,575 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:21:07,647 INFO [root] Data published to MQTT.
+2026-04-04 11:21:07,647 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:26:06,130 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:26:06,131 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:26:06,530 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:26:06,602 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:26:06,673 INFO [root] Data published to MQTT.
+2026-04-04 11:26:06,674 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:31:04,614 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:31:04,614 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:31:04,946 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:31:05,022 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:31:05,102 INFO [root] Data published to MQTT.
+2026-04-04 11:31:05,102 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:36:02,121 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:36:02,122 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:36:02,485 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:36:02,559 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:36:02,634 INFO [root] Data published to MQTT.
+2026-04-04 11:36:02,634 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:41:00,432 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:41:00,433 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:41:00,766 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:41:00,848 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:41:00,930 INFO [root] Data published to MQTT.
+2026-04-04 11:41:00,931 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:45:58,933 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:45:58,934 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:45:59,584 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:45:59,660 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:45:59,738 INFO [root] Data published to MQTT.
+2026-04-04 11:45:59,738 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:50:58,000 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:50:58,001 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:50:58,340 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:50:58,432 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:50:58,517 INFO [root] Data published to MQTT.
+2026-04-04 11:50:58,518 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 11:55:55,831 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 11:55:55,832 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 11:55:56,201 INFO [root] Sending weather data to plate plate01
+2026-04-04 11:55:56,292 INFO [root] Sending weather data to plate plate02
+2026-04-04 11:55:56,377 INFO [root] Data published to MQTT.
+2026-04-04 11:55:56,377 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:00:54,046 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:00:54,048 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:00:54,436 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:00:54,515 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:00:54,590 INFO [root] Data published to MQTT.
+2026-04-04 12:00:54,590 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:05:52,709 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:05:52,710 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:05:53,068 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:05:53,166 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:05:53,246 INFO [root] Data published to MQTT.
+2026-04-04 12:05:53,246 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:10:51,890 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:10:51,891 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:10:52,230 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:10:52,309 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:10:52,385 INFO [root] Data published to MQTT.
+2026-04-04 12:10:52,386 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:15:51,284 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:15:51,285 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:15:51,668 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:15:51,775 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:15:51,870 INFO [root] Data published to MQTT.
+2026-04-04 12:15:51,871 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:20:50,776 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:20:50,776 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:20:51,121 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:20:51,225 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:20:51,320 INFO [root] Data published to MQTT.
+2026-04-04 12:20:51,321 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:25:51,144 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:25:51,145 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:25:51,489 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:25:51,576 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:25:51,660 INFO [root] Data published to MQTT.
+2026-04-04 12:25:51,660 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:30:51,586 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:30:51,587 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:30:51,970 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:30:52,046 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:30:52,139 INFO [root] Data published to MQTT.
+2026-04-04 12:30:52,140 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:35:52,088 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:35:52,089 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:35:52,517 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:35:52,594 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:35:52,668 INFO [root] Data published to MQTT.
+2026-04-04 12:35:52,668 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:40:52,496 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:40:52,497 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:40:52,812 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:40:52,898 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:40:53,110 INFO [root] Data published to MQTT.
+2026-04-04 12:40:53,111 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:45:52,748 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:45:52,750 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:45:53,082 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:45:53,163 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:45:53,236 INFO [root] Data published to MQTT.
+2026-04-04 12:45:53,236 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:50:52,968 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:50:52,969 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:50:53,332 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:50:53,420 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:50:53,499 INFO [root] Data published to MQTT.
+2026-04-04 12:50:53,499 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 12:55:52,772 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 12:55:52,773 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 12:55:53,125 INFO [root] Sending weather data to plate plate01
+2026-04-04 12:55:53,223 INFO [root] Sending weather data to plate plate02
+2026-04-04 12:55:53,314 INFO [root] Data published to MQTT.
+2026-04-04 12:55:53,315 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:00:52,453 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:00:52,454 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:00:52,862 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:00:52,947 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:00:53,028 INFO [root] Data published to MQTT.
+2026-04-04 13:00:53,028 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:05:52,369 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:05:52,370 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:05:52,718 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:05:52,796 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:05:52,870 INFO [root] Data published to MQTT.
+2026-04-04 13:05:52,871 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:10:51,886 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:10:51,887 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:10:52,260 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:10:52,355 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:10:52,433 INFO [root] Data published to MQTT.
+2026-04-04 13:10:52,434 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:15:51,214 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:15:51,215 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:15:51,554 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:15:51,633 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:15:51,709 INFO [root] Data published to MQTT.
+2026-04-04 13:15:51,710 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:20:50,620 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:20:50,621 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:20:51,497 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:20:51,588 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:20:51,682 INFO [root] Data published to MQTT.
+2026-04-04 13:20:51,682 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:25:50,225 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:25:50,226 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:25:50,679 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:25:50,774 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:25:50,873 INFO [root] Data published to MQTT.
+2026-04-04 13:25:50,873 INFO [root] Waiting 5 minutes before next scan...
+2026-04-04 13:30:49,313 INFO [root] Fetching weather data and publishing to MQTT...
+2026-04-04 13:30:49,314 INFO [root] Fetching weather data for city: Plouvain
+2026-04-04 13:30:49,640 INFO [root] Sending weather data to plate plate01
+2026-04-04 13:30:49,722 INFO [root] Sending weather data to plate plate02
+2026-04-04 13:30:49,798 INFO [root] Data published to MQTT.
+2026-04-04 13:30:49,798 INFO [root] Waiting 5 minutes before next scan...

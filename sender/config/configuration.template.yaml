@@ -1,0 +1,29 @@
+logging:
+  file: log/meteofrance2openhasp.log # Path to the log file. If not provided, logging to file is disabled, and logging to console will be enabled.
+  console: true
+  level: info
+  format: '%(asctime)s %(levelname)s [%(name)s] %(message)s'
+
+sender:
+  scan_interval: 5         # Number of minutes between each data retrieval (0 means no scan: a single data retrieval at startup, then stops).
+  city: "Paris"            # City for which to retrieve the data.
+  plates:
+  - name: plate01
+    start_page: 2          # the page number for the main weather page
+    nr_days_detail: 4      # the number of pages with detail weather
+    extra_tempnow: p11b7   # the element to which to replicate temp now, for example to "idle" page. Leave empty if not needed.
+    extra_iconnow: p11b6   # the element to which to replicate weather icon now, for example to "idle" page. Leave empty if not needed.
+  - name: plate02
+    start_page: 3          # the page number for the main weather page
+    nr_days_detail: 4      # the number of pages with detail weather
+    extra_tempnow: p12b7   # the element to which to replicate temp now, for example to "idle" page. Leave empty if not needed.
+    extra_iconnow: p12b6   # the element to which to replicate weather icon now, for example to "idle" page. Leave empty if not needed.
+
+mqtt:
+  mock: false              # If true, it will not send to MQTT, but will log at info level. This is useful for testing the configuration without sending data to MQTT.
+  broker: "!secret mqtt.broker"
+  port: "!secret mqtt.port"
+  username: "!secret mqtt.username"
+  password: "!secret mqtt.password"
+  keepalive: 60
+  base_topic: meteofrance2openhasp

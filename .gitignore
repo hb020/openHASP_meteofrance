@@ -1,1 +1,6 @@
 .DS_Store
+sender/config/secrets.yaml
+sender/docker-compose.yaml
+sender/config/configuration.yaml
+__pycache__
+.venv

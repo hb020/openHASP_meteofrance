@@ -30,50 +30,9 @@ The pages must be consecutive, and in that order. If you change the page numbers
 
 You will also need to upload the ```files/p*.bin``` weather icons to your device.
 
-# The feed script
+# How to send the weather data to the device(s)
 
-See ```send_weather.py```.
-
-It is to be run regularly (by cron for example). The following is required:
-
-* python 3
-* python lib dependencies:
-
-```bash
-python3 -m pip install meteofrance-api
-python3 -m pip install paho-mqtt
-```
-
-See the variable at the top of the file for configurables, the most important being:
-
-```python
-MQTTSERVER = "192.168.4.20"
-CITY = "Paris"
-PLATE_NAME = "plate01"
-```
-
-and the page configuration having the configuration of 1 or more displays:
-
-```python
-plate_config = {
-    "plate01": {
-        "start_page": 2,  # the page number for the main weather page
-        "nr_days_detail": 4,  # the number of pages with detail weather
-        "extra_tempnow": "p11b7",  # the element to which to replicate temp now
-        "extra_iconnow": "p11b6"  # the element to which to replicate weather icon now
-    },
-    "plate02": {
-        "start_page": 3,
-        "nr_days_detail": 4,
-        "extra_tempnow": "p12b7",  # the element to which to replicate temp now
-        "extra_iconnow": "p12b6"  # the element to which to replicate weather icon now
-    }
-}
-```
-
-Adapt to your needs. You will of course need to match this with your display(s).
-
-`extra_tempnow`, `extra_iconnow` are used to replicate the temperature and weather to other pages (I have it on the 'idle' screen).
+See [the readme for the sender](./sender/README.md)
 
 # How to get new images
 

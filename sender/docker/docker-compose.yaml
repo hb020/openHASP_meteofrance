@@ -1,0 +1,15 @@
+services:
+  meteofrance2openhasp:
+    build:
+      context: .
+      dockerfile: ./docker/Dockerfile
+    image: hb020/meteofrance2openhasp:latest
+    container_name: meteofrance2openhasp
+    restart: unless-stopped
+    network_mode: bridge
+    user: "1000:1000"
+    volumes:
+      - ./config:/app/config
+      - ./log:/app/log
+    environment:
+      - MQTT_BROKER=
