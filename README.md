@@ -8,7 +8,7 @@ It is comprised of:
 
 * a section of pages.jsonl
 * weather icon images files
-* a python script that feeds the openHASP plate via MQTT, and is to be run every x minutes. It will replace all weather data on each pass.
+* at choice, a python script, or a container, that feeds the openHASP plate via MQTT. It will replace all weather data on each pass.
 
 # Provided pages
 
@@ -38,6 +38,6 @@ See [the readme for the sender](./sender/README.md)
 
 * get the SVG files from meteofrance via ```python3 svg2png.py```
 * then transform the ```img/p*.png``` files to ```bin``` files:
-  * I did that on line, following the indications on the openHASP site. Just be aware that the online tool can only handle about 12 files at a time.
+  * I did that online, following the indications on the openHASP site. Just be aware that the online tool can only handle about 12 files at a time.
   * put the resulting ```.bin``` files in ```/files```
   * upload the bin files to the device
