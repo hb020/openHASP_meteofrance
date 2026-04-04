@@ -2,11 +2,11 @@
 
 Meteofrance2OpenHASP is a gateway that reads data from Meteo France (the French weather service) posts it to a MQTT message broker for direct consumption by OpenHASP plates.
 
-## Installation
+## Installation and Running
 
-Meteofrance2OpenHASP can be used and installed in many ways.
+Meteofrance2OpenHASP can be used and installed in two ways.
 
-### 1. Direct execution
+### 1. As a python script
 
 1. Fetch the code from github
 2. Install the python dependencies. If you do it via a virtual environment, do:
@@ -75,7 +75,7 @@ The configuration is to be provided using two YAML files: a configuration file a
 
 Both these files may or may not use environment variables.
 
-The construction of the effective configuration works the same for all installation types (container, PIP package, source files...). In order to assist in debugging, the application will log, at startup, the effective configuration as constructed from the config file, the secret file, and any environment variables that are used.
+The construction of the effective configuration works the same for all installation types. In order to assist in debugging, the application will log, at startup, the effective configuration as constructed from the config file, the secret file, and any environment variables that are used.
 
 ### Configuration files
 
@@ -140,4 +140,4 @@ By default, the configuration files make use of the environment variables below:
 It is however not mandatory to use these variables; you are free to rename them, or to not use them, as long as you adapt the configuration files accordingly.
 
 If you use containers, environment variables are often the easiest way to provide secrets to the application.
-You can setup them directly in a docker-compose.yaml file (environment section) or from a Docker command line (-e option).
+You can set them directly in a docker-compose.yaml file (environment section) or from a Docker command line (-e option).
